@@ -118,6 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Icons\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
