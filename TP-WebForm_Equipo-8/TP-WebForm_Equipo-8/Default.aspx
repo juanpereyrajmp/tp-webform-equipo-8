@@ -3,8 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container text-center">
-        <h1>Pagina Default - Home</h1>
+
+    <div class="container text-center mt-4"> 
+        <h1>Artículos</h1>
     </div>
 
 </asp:Content>
