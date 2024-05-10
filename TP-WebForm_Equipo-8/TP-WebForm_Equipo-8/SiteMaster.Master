@@ -18,12 +18,12 @@
             <div class="container text-center">
                 <div id="contenedor-default" class="col-md-1 offset-md-3">
                     <a class="navbar-brand" href="Default.aspx">
-                        <img src="/Content/Icons/ico-shop.svg" alt="Logo" width="30" height="24">
+                        <img src="/Content/Icons/ico-shop.svg" alt="Logo" width="45" height="38">
                     </a>
                 </div>
                 <div id="contenedor-carrito">
                     <a class="navbar-brand" href="FormCarrito.aspx">
-                        <img src="/Content/Icons/ico-cart2.svg" alt="Logo" width="30" height="24">
+                        <img src="/Content/Icons/ico-cart2.svg" alt="Logo" width="45" height="38">
                     </a>
                 </div>
             </div>
