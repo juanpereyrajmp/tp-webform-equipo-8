@@ -11,7 +11,7 @@ namespace TP_WebForm_Equipo_8
 {
 
 
-    public partial class Default
+    public partial class FormCarrito
     {
     }
 }
