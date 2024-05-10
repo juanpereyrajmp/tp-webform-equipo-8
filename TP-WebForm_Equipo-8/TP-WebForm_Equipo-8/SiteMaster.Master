@@ -4,7 +4,7 @@
 
 <html>
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>AJR Solutions</title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -14,17 +14,22 @@
 <body>
     <form id="form1" runat="server">
         <nav>
-            Aca va el Nav
-            <a href="Default.aspx">Home</a>
-            <a href="FormCarrito.aspx">Carrito</a>
+            <div class="container text-center">
+
+                <a href="Default.aspx">Tienda</a>
+                <a href="FormCarrito.aspx">Carrito</a>
+            </div>
         </nav>
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-        <footer>
-            Footer
-        </footer>
+        <div id="footer" class="container text-center">
+            <footer>
+                Footer
+            </footer>
+
+        </div>
     </form>
 </body>
 </html>
