@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using manager;
 
 namespace TP_WebForm_Equipo_8
 {
@@ -11,7 +12,9 @@ namespace TP_WebForm_Equipo_8
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            ArticuloManager manager = new ArticuloManager();
+            dvgArticulos.DataSource = manager.ListarArticulosConSP();
+            dvgArticulos.DataBind();
         }
     }
 }

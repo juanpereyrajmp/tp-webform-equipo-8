@@ -7,5 +7,6 @@
     <div class="container text-center mt-4"> 
         <h1>Artículos</h1>
     </div>
+    <asp:GridView ID="dvgArticulos" runat="server" CssClass="table"></asp:GridView>
 
 </asp:Content>
