@@ -16,12 +16,12 @@
                         <img src="<%# Eval("Imagen") %>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><%#Eval("Nombre") %></h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <p class="card-text"><%#Eval("Descripcion") %></p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">An item</li>
-                            <li class="list-group-item">A second item</li>
-                            <li class="list-group-item">A third item</li>
+                            <li class="list-group-item"><%#Eval("Marca") %> </li>
+                            <li class="list-group-item"><%#Eval("Categoria") %></li>
+                            <li class="list-group-item"><%#Eval("Precio") %></li>
                         </ul>
                         <div class="card-body">
                             <a href="#" class="card-link">Card link</a>
