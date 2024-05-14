@@ -17,7 +17,8 @@ namespace TP_WebForm_Equipo_8
             ArticuloManager manager = new ArticuloManager();
             //dvgArticulos.DataSource = manager.ListarArticulosConSP();
             //dvgArticulos.DataBind();
-            ListaArticulos = manager.ListarArticulosConSP();
+            //ListaArticulos = manager.ListarArticulosConSP();
+            ListaArticulos = manager.ListarArticulos();
             repArticulos.DataSource = ListaArticulos;
             repArticulos.DataBind();
         }
