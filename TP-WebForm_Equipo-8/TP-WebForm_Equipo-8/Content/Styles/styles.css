@@ -1,0 +1,12 @@
+﻿/*SECCION NAV*/
+.contador {
+    margin-left: 30px;
+    margin-right: 10px;
+    background-color: royalblue;
+    color: #ffffff;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+}

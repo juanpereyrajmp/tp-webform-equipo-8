@@ -14,13 +14,45 @@ namespace TP_WebForm_Equipo_8
         public List<Articulo> ListaArticulos { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            ArticuloManager manager = new ArticuloManager();
-            //dvgArticulos.DataSource = manager.ListarArticulosConSP();
-            //dvgArticulos.DataBind();
-            //ListaArticulos = manager.ListarArticulosConSP();
-            ListaArticulos = manager.ListarArticulos();
-            repArticulos.DataSource = ListaArticulos;
-            repArticulos.DataBind();
+            ArticuloManager negocio = new ArticuloManager();
+            ListaArticulos = negocio.listaParaImagenes();
+
+            if (!IsPostBack)
+            {
+                repArticulos.DataSource = ListaArticulos;
+                repArticulos.DataBind();
+            }
+        }
+
+        protected void btnAgregarAlCarrito_Click(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int articuloId = Convert.ToInt32(btn.CommandArgument);
+
+            ArticuloManager negocio = new ArticuloManager();
+            ListaArticulos = negocio.listaParaImagenes();
+
+
+            List<Articulo> seleccionados;
+            if (Session["Seleccionados"] == null)
+            {
+                seleccionados = new List<Articulo>();
+            }
+            else
+            {
+                seleccionados = (List<Articulo>)Session["Seleccionados"];
+            }
+
+            foreach (Articulo item in ListaArticulos)
+            {
+                if (articuloId == item.Id)
+                {
+                    seleccionados.Add(item);
+                }
+            }
+
+            Session["Seleccionados"] = seleccionados;
+            Response.Redirect(Request.RawUrl);
         }
     }
 }

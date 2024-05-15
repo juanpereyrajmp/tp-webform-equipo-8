@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Styles\styles.css" />
     <Content Include="Default.aspx" />
     <Content Include="FormCarrito.aspx" />
     <Content Include="Global.asax" />

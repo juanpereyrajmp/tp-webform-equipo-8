@@ -1,4 +1,5 @@
-﻿using System;
+﻿using dominio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,16 @@ namespace TP_WebForm_Equipo_8
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                if (Session["Seleccionados"] != null)
+                {
+                    List<Articulo> seleccionados = (List<Articulo>)Session["Seleccionados"];
+                    int cantidadArticulos = seleccionados.Count;
 
+                    contadorCarrito.Text = cantidadArticulos.ToString();
+                }
+            }
         }
     }
 }

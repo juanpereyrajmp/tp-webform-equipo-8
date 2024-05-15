@@ -13,5 +13,14 @@ namespace TP_WebForm_Equipo_8
 
     public partial class FormCarrito
     {
+
+        /// <summary>
+        /// Control repEliminar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater repEliminar;
     }
 }
