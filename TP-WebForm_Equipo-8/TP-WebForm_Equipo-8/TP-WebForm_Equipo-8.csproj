@@ -67,6 +67,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Icons\logo-carrito.png" />
+    <Content Include="Content\Icons\logo-tienda.png" />
     <Content Include="Content\Styles\styles.css" />
     <Content Include="Default.aspx" />
     <Content Include="FormCarrito.aspx" />
@@ -119,7 +121,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Icons\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>

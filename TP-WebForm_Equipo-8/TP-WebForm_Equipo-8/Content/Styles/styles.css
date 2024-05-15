@@ -2,6 +2,7 @@
 .contador {
     margin-left: 30px;
     margin-right: 10px;
+    margin-top: 5px;
     background-color: royalblue;
     color: #ffffff;
     border-radius: 50%;
@@ -9,4 +10,31 @@
     height: 30px;
     text-align: center;
     line-height: 30px;
+}
+
+h1 {
+    margin: 40px;
+}
+
+.header {
+    padding-top: 30px;
+    padding-bottom: 30px; 
+}
+
+.navbar {
+    height: 80px; 
+}
+
+.navbar-nav .navbar-brand img {
+    nav .navbar-brand img{
+        filter: invert(1) !important;
+    }
+}
+
+.texto-carrito {
+    color: white;
+}
+
+.texto-tienda {
+    color: white;
 }
