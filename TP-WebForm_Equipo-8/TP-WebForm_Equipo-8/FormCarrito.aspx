@@ -34,11 +34,11 @@
                                    <%# (Convert.ToDecimal(Eval("Precio")) * Convert.ToInt32(Eval("Cantidad"))).ToString("C") %>
                            </ItemTemplate>
                     </asp:TemplateField>
-                    <asp:CommandField ShowEditButton="True"  />
-                     
-                    
-                </Columns>
-            </asp:GridView>
+                   
+                
+                  <asp:CommandField ShowEditButton="true" EditText="Editar" CancelText="Cancelar" UpdateText="Actualizar" HeaderText="+"/>
+            </Columns>
+          </asp:GridView>
 
 
 

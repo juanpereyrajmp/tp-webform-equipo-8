@@ -31,26 +31,11 @@ namespace TP_WebForm_Equipo_8
             }
         }
 
-        protected void dgvCarrito_RowEditing(object sender, GridViewUpdateEventArgs e)
+        protected void dgvCarrito_RowEditing(object sender, GridViewEditEventArgs e)
         {
-            List<Articulo> seleccionados = (List<Articulo>)Session["Seleccionados"];
-
-            GridViewRow row = dgvCarrito.Rows[e.RowIndex];
-            TextBox txtCantidad = (TextBox)row.FindControl("txtCantidad");
-            int nuevaCantidad = Convert.ToInt32(txtCantidad.Text);
-
-            // Actualiza la cantidad en tu fuente de datos, por ejemplo, en una lista de productos en el carrito
-            int indice = e.RowIndex;
-            List<Articulo> carrito = Session["Articulo"] as List<Articulo>;
-            carrito[indice].Cantidad = nuevaCantidad;
-
-            // Cancela el modo de edición
-            //dgvCarrito.EditIndex = -1;
-
-            // Vuelve a enlazar los datos al GridView
-            dgvCarrito.DataSource = seleccionados;
-            dgvCarrito.DataBind();
+            
         }
+
 
         //protected void btnEliminarDelCarrito_Click(object sender, EventArgs e)
         //{
