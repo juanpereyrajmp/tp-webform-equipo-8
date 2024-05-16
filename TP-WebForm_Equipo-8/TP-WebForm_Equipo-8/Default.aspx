@@ -25,7 +25,7 @@
                             <li class="list-group-item"><%#Eval("Precio") %></li>
                         </ul>
                         <div class="card-body">
-                            <asp:Button ID="btnAgregarAlCarrito" runat="server" Text="Agregar al carrito" OnClick="btnAgregarAlCarrito_Click" CssClass="btn btn-primary" CommandArgument='<%# Eval("Id") %>' CommandName="ArticuloId" OnClientClick="actualizarContador(); return true;" />
+                            <asp:Button ID="btnAgregarAlCarrito" runat="server" Text="Agregar al carrito" OnClick="btnAgregarAlCarrito_Click" CssClass="btn btn-primary" CommandArgument='<%# Eval("Id") %>' CommandName="ArticuloId" />
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
         </asp:Repeater>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <%-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         function actualizarContador() {
             $.ajax({
@@ -48,7 +48,7 @@
 
             });
         }
-    </script>
+    </script>--%>
 
 </asp:Content>
 

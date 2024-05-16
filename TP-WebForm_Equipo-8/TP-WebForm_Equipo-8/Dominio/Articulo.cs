@@ -19,8 +19,9 @@ namespace dominio
             Categoria = new Categoria();
             Imagen = "";
             Precio = 0;
+            Cantidad = 1;
         }
-        public Articulo(string codigoArt, string nombreArt, string descripcionArt, Marca marcaArt, Categoria categoriaArt, string imagenes, decimal precio)
+        public Articulo(string codigoArt, string nombreArt, string descripcionArt, Marca marcaArt, Categoria categoriaArt, string imagenes, decimal precio, int cantidad)
         {
             Codigo = codigoArt;
             Nombre = nombreArt;
@@ -29,6 +30,7 @@ namespace dominio
             Categoria = categoriaArt;
             Imagen = imagenes;
             Precio = precio;
+            Cantidad = cantidad;
         }
         public int Id { get; set; }
         [DisplayName("Código")]
@@ -42,7 +44,7 @@ namespace dominio
         [DisplayName("Imágenes")]
         public List<string> Imagenes { get; set; }
 
-
+        public int Cantidad { get; set; }
         public string Imagen { get; set; }
         public decimal Precio { get; set; }
 

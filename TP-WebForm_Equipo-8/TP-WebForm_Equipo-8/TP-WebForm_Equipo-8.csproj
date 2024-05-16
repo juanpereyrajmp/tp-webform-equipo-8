@@ -84,6 +84,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Dominio\Carrito.cs" />
     <Compile Include="FormCarrito.aspx.cs">
       <DependentUpon>FormCarrito.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

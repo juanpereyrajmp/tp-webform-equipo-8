@@ -8,9 +8,44 @@
         <h1>Lista del carrito</h1>
     </div>
 
-    <section class="body-def">
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-            <asp:Repeater ID="repEliminar" runat="server">
+   
+
+    <section class="body-def contetiner">
+       <%-- <div class="row row-cols-1 row-cols-md-3 g-4">--%>
+
+            <asp:GridView ID="dgvCarrito" runat="server" ORowEditing="dgvCarrito_RowEditing" AutoGenerateColumns="false" CssClass="table table-dark table-border">
+                <Columns>
+                    <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                    <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
+                    <asp:BoundField HeaderText="Marca" DataField="Marca" />
+                    <asp:BoundField HeaderText="Categoria" DataField="Categoria" />
+                    <asp:BoundField HeaderText="Precio Unidad" DataField="Precio" />
+                   <%-- <asp:BoundField HeaderText="Cantidad" DataField="Cantidad"/> --%>
+                   <asp:TemplateField HeaderText="Cantidad">
+                          <ItemTemplate>
+                                 <%# Eval("Cantidad") %>
+                          </ItemTemplate>
+                          <EditItemTemplate>
+                                <asp:TextBox ID="txtCantidad" runat="server" Text='<%# Bind("Cantidad") %>' />
+                          </EditItemTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Total">
+                           <ItemTemplate>
+                                   <%# (Convert.ToDecimal(Eval("Precio")) * Convert.ToInt32(Eval("Cantidad"))).ToString("C") %>
+                           </ItemTemplate>
+                    </asp:TemplateField>
+                    <asp:CommandField ShowEditButton="True"  />
+                     
+                    
+                </Columns>
+            </asp:GridView>
+
+
+
+
+
+
+           <%-- <asp:Repeater ID="repEliminar" runat="server">
                 <ItemTemplate>
                     <div class="col">
                         <div class="card" style="width: 100%; margin: auto;">
@@ -30,8 +65,8 @@
                         </div>
                     </div>
                 </ItemTemplate>
-            </asp:Repeater>
-        </div>
+            </asp:Repeater>--%>
+        <%--</div>--%>
     </section>
 
 </asp:Content>

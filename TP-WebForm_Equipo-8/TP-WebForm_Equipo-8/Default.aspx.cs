@@ -22,15 +22,23 @@ namespace TP_WebForm_Equipo_8
                 repArticulos.DataSource = ListaArticulos;
                 repArticulos.DataBind();
             }
+            //if (Session["ListaArticulos"] == null)
+            //{
+            //    Session.Add("ListaArticulos", ListaArticulos);
+            //    repArticulos.DataSource = ListaArticulos;
+            //    repArticulos.DataBind();
+            //}
         }
 
         protected void btnAgregarAlCarrito_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             int articuloId = Convert.ToInt32(btn.CommandArgument);
+            Carrito carrito = new Carrito();
 
             ArticuloManager negocio = new ArticuloManager();
-            ListaArticulos = negocio.listaParaImagenes();
+            //ListaArticulos = negocio.listaParaImagenes();
+            ListaArticulos = negocio.ListarArticulos();
 
 
             List<Articulo> seleccionados;
@@ -43,13 +51,42 @@ namespace TP_WebForm_Equipo_8
                 seleccionados = (List<Articulo>)Session["Seleccionados"];
             }
 
+            //foreach (Articulo item in ListaArticulos)
+            //{
+            //    // Si el ID del artículo coincide con el ID del artículo del botón, lo agrega a la lista de seleccionados
+            //    if (articuloId == item.Id)
+            //    {
+            //        // Agrega el artículo a la lista de seleccionados
+            //        seleccionados.Add(item);
+            //        // Detenemos la búsqueda una vez que el artículo se ha encontrado y agregado
+            //        break;
+            //    }
+            //}
+
+
             foreach (Articulo item in ListaArticulos)
             {
-                if (articuloId == item.Id)
+              if (articuloId == item.Id)
                 {
-                    seleccionados.Add(item);
+            
+                    if (!seleccionados.Any(a => a.Id == item.Id))
+                    {
+                        seleccionados.Add(item);
+                       
+                    }
+            
+                    break;
                 }
             }
+
+
+            //foreach (Articulo item in ListaArticulos)
+            //{
+            //    if (articuloId == item.Id)
+            //  {
+            //       seleccionados.Add(item);
+            //    }
+            //}
 
             Session["Seleccionados"] = seleccionados;
             Response.Redirect(Request.RawUrl);
