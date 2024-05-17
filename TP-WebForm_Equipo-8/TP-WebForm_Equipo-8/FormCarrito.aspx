@@ -3,6 +3,33 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <link href="Content/Styles/carritoStyles.css"/ rel="stylesheet">
+
+    <style>
+        .table-custom {
+    background-color: #343a40;
+    color: #fff;
+}
+
+    .table-custom th {
+        background-color: #7bc947;
+        color: #fff;
+    }
+
+    .table-custom td, .table-custom th {
+        border-color: #454d55;
+    }
+
+    .table-custom .btn {
+        margin-right: 5px;
+    }
+
+    .table-custom .form-control {
+        width: 80px;
+    }
+    </style>
+
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="text-center mt-4">
         <h1>Carrito de compras</h1>
@@ -17,7 +44,7 @@
         <asp:Label ID="lblError" runat="server" ForeColor="Red" />
         <asp:GridView ID="dgvCarrito" runat="server"
             AutoGenerateColumns="false"
-            CssClass="table table-dark table-border"
+            CssClass="table table-custom"
             OnRowCancelingEdit="dgvCarrito_RowCancelingEdit"
             OnRowDeleting="dgvCarrito_RowDeleting"
             OnRowEditing="dgvCarrito_RowEditing"
@@ -35,7 +62,7 @@
                         <asp:Label ID="LabCarritoCant" runat="server" Text='<%# Eval("Cantidad") %>'></asp:Label>
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="txtCarritoCant" runat="server" Text='<%# Bind("Cantidad") %>' />
+                        <asp:TextBox ID="txtCarritoCant" runat="server" Text='<%# Bind("Cantidad") %>' CssClass="form-control"/>
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Total">
@@ -43,9 +70,24 @@
                         <%# (Convert.ToDecimal(Eval("Precio")) * Convert.ToInt32(Eval("Cantidad"))).ToString("C") %>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:CommandField ButtonType="Link" ShowEditButton="true"
-                    ShowDeleteButton="true" />
-
+                <asp:TemplateField>
+            <ItemTemplate>
+                <asp:LinkButton ID="EditButton" runat="server" CommandName="Edit" CssClass="btn btn-primary btn-sm">
+                    <i class="fas fa-edit"></i> Editar
+                </asp:LinkButton>
+                <asp:LinkButton ID="DeleteButton" runat="server" CommandName="Delete" CssClass="btn btn-danger btn-sm">
+                    <i class="fas fa-trash-alt"></i> Eliminar
+                </asp:LinkButton>
+            </ItemTemplate>
+            <EditItemTemplate>
+                <asp:LinkButton ID="UpdateButton" runat="server" CommandName="Update" CssClass="btn btn-success btn-sm">
+                    <i class="fas fa-check"></i> Actualizar
+                </asp:LinkButton>
+                <asp:LinkButton ID="CancelButton" runat="server" CommandName="Cancel" CssClass="btn btn-secondary btn-sm">
+                    <i class="fas fa-times"></i> Cancelar
+                </asp:LinkButton>
+            </EditItemTemplate>
+        </asp:TemplateField>
             </Columns>
         </asp:GridView>
 
