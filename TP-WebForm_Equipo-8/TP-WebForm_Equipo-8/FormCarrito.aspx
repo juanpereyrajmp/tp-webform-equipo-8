@@ -8,51 +8,53 @@
         <h1>Lista del carrito</h1>
     </div>
 
-   
+
 
     <section class="body-def contetiner">
-       <%-- <div class="row row-cols-1 row-cols-md-3 g-4">--%>
+        <%-- <div class="row row-cols-1 row-cols-md-3 g-4">--%>
 
-            <asp:GridView ID="dgvCarrito" runat="server" 
-                AutoGenerateColumns="false" 
-                CssClass="table table-dark table-border" 
-                OnRowCancelingEdit="dgvCarrito_RowCancelingEdit" 
-                OnRowDeleting="dgvCarrito_RowDeleting" 
-                OnRowEditing="dgvCarrito_RowEditing" 
-                OnRowUpdating="dgvCarrito_RowUpdating"
-                DataKeyNames="Id">
-                <Columns>
-                    <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                    <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
-                    <asp:BoundField HeaderText="Marca" DataField="Marca" />
-                    <asp:BoundField HeaderText="Categoria" DataField="Categoria" />
-                    <asp:BoundField HeaderText="Precio Unidad" DataField="Precio" />
-                   <%-- <asp:BoundField HeaderText="Cantidad" DataField="Cantidad"/> --%>
-                   <asp:TemplateField HeaderText="Cantidad">
-                          <ItemTemplate>
-                              <asp:Label ID="LabCarritoCant" runat="server" Text= <%# Eval("Cantidad") %>></asp:Label>
-                          </ItemTemplate>
-                          <EditItemTemplate>
-                                <asp:TextBox ID="txtCarritoCant" runat="server" Text='<%# Bind("Cantidad") %>' />
-                          </EditItemTemplate>
-                    </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Total">
-                           <ItemTemplate>
-                                   <%# (Convert.ToDecimal(Eval("Precio")) * Convert.ToInt32(Eval("Cantidad"))).ToString("C") %>
-                           </ItemTemplate>
-                    </asp:TemplateField>
-                   <asp:CommandField ButtonType="Link" ShowEditButton="true" 
-                       ShowDeleteButton="true"/>
-  
-                </Columns>
-            </asp:GridView>
+        
+        <asp:Label ID="lblError" runat="server" ForeColor="Red" CssClass="error-label"/>
+        <asp:GridView ID="dgvCarrito" runat="server"
+            AutoGenerateColumns="false"
+            CssClass="table table-dark table-border"
+            OnRowCancelingEdit="dgvCarrito_RowCancelingEdit"
+            OnRowDeleting="dgvCarrito_RowDeleting"
+            OnRowEditing="dgvCarrito_RowEditing"
+            OnRowUpdating="dgvCarrito_RowUpdating"
+            DataKeyNames="Id">
+            <Columns>
+                <asp:BoundField HeaderText="Nombre" DataField="Nombre" ReadOnly="true" />
+                <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" ReadOnly="true" />
+                <asp:BoundField HeaderText="Marca" DataField="Marca" ReadOnly="true" />
+                <asp:BoundField HeaderText="Categoria" DataField="Categoria" ReadOnly="true" />
+                <asp:BoundField HeaderText="Precio Unidad" DataField="Precio" ReadOnly="true" />
+                <%-- <asp:BoundField HeaderText="Cantidad" DataField="Cantidad"/> --%>
+                <asp:TemplateField HeaderText="Cantidad">
+                    <ItemTemplate>
+                        <asp:Label ID="LabCarritoCant" runat="server" Text='<%# Eval("Cantidad") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtCarritoCant" runat="server" Text='<%# Bind("Cantidad") %>' />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Total">
+                    <ItemTemplate>
+                        <%# (Convert.ToDecimal(Eval("Precio")) * Convert.ToInt32(Eval("Cantidad"))).ToString("C") %>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:CommandField ButtonType="Link" ShowEditButton="true"
+                    ShowDeleteButton="true" />
 
-
-
-
+            </Columns>
+        </asp:GridView>
 
 
-           <%-- <asp:Repeater ID="repEliminar" runat="server">
+
+
+
+
+        <%-- <asp:Repeater ID="repEliminar" runat="server">
                 <ItemTemplate>
                     <div class="col">
                         <div class="card" style="width: 100%; margin: auto;">

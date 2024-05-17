@@ -1,11 +1,11 @@
 ﻿using dominio;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using dominio;
 
 namespace TP_WebForm_Equipo_8
 {
@@ -82,17 +82,25 @@ namespace TP_WebForm_Equipo_8
                         int nuevaCantidad;
                         if (int.TryParse(txtCarritoCant.Text, out nuevaCantidad))
                         {
-                         
-                            articuloAActualizar.Cantidad = nuevaCantidad;
+                            if (nuevaCantidad > 0 && nuevaCantidad <= 100)
+                            {
+                                articuloAActualizar.Cantidad = nuevaCantidad;
 
-                           
-                            Session["Seleccionados"] = seleccionados;
+                                Session["Seleccionados"] = seleccionados;
 
-                            dgvCarrito.EditIndex = -1;
-                            dgvCarrito.DataSource = seleccionados;
-                            dgvCarrito.DataBind();
+                                dgvCarrito.EditIndex = -1;
+                                dgvCarrito.DataSource = seleccionados;
+                                dgvCarrito.DataBind();
+                            }
+                            else
+                            {                         
+                                lblError.Text = "La cantidad ingresada no es correcta";
+                            }
                         }
-                       
+                        else
+                        {
+                            lblError.Text = "La cantidad ingresada no es un número válido.";
+                        }
                     }
                 }
             }
