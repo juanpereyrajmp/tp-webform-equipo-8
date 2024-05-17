@@ -1,9 +1,10 @@
 ﻿/*SECCION NAV*/
+
+
 .contador {
-    margin-left: 30px;
     margin-right: 10px;
     margin-top: 5px;
-    background-color: royalblue;
+    background-color: #808080;
     color: #ffffff;
     border-radius: 50%;
     width: 30px;
@@ -18,17 +19,61 @@ h1 {
 
 .header {
     padding-top: 30px;
-    padding-bottom: 30px; 
+    padding-bottom: 30px;
+}
+
+.nav-container {
+    background-color: #000000;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1030;
+    width: 100%;
+}
+
+.container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+body {
+    padding: 60px;
 }
 
 .navbar {
-    height: 80px; 
+    height: 60px;
+    max-width: 1100px;
+    margin: auto;
+    width: 100%;
+}
+
+
+.navbar-brand i {
+    color: white;
+    font-size: 25px;
+}
+.nav-container .centered {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.nav-container .spaced {;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-container .spaced i:hover {
+    color: #808080;
 }
 
 .navbar-nav .navbar-brand img {
-    nav .navbar-brand img{
-        filter: invert(1) !important;
-    }
+    filter: invert(1) !important;
 }
 
 .texto-carrito {
@@ -36,5 +81,9 @@ h1 {
 }
 
 .texto-tienda {
+    color: white;
+}
+
+#marca {
     color: white;
 }
