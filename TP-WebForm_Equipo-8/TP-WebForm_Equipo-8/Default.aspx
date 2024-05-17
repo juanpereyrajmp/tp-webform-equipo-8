@@ -6,32 +6,34 @@
     <link href="~/Content/Styles/styles.css" rel="stylesheet" type="text/css"/>
     
     <div class="text-center mt-4">
-        <h1>Artículos</h1>
+        <h1>Articulos</h1>
     </div>
 
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <asp:Repeater ID="repArticulos" runat="server">
             <ItemTemplate>
                 <div class="col">
-                    <div class="card" style="width: 100%; margin: auto;">
-                        <img src="<%# Eval("Imagen") %>" class="card-img-top" alt="..." style="height: 200px; object-fit: cover; margin: auto; width: auto;">
+                    <div class="card shadow-sm" style="width: 100%; margin: auto;">
+                        <img src="<%# Eval("Imagen") %>" class="card-img-top" alt="Imagen del Articulo" style="height: 200px; object-fit: cover; margin: auto; width: auto;" onerror="this.onerror=null;this.src='https://www.svgrepo.com/show/508699/landscape-placeholder.svg';">
                         <div class="card-body">
                             <h5 class="card-title"><%#Eval("Nombre") %></h5>
                             <p class="card-text"><%#Eval("Descripcion") %></p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><%#Eval("Marca") %> </li>
-                            <li class="list-group-item"><%#Eval("Categoria") %></li>
-                            <li class="list-group-item"><%#Eval("Precio") %></li>
+                            <li class="list-group-item"><strong>Marca:</strong> <%#Eval("Marca") %> </li>
+                            <li class="list-group-item"><strong>Categoria:</strong> <%#Eval("Categoria") %></li>
+                            <li class="list-group-item"><strong>Precio:</strong> <%#Eval("Precio") %></li>
                         </ul>
-                        <div class="card-body">
-                            <asp:Button ID="btnAgregarAlCarrito" runat="server" Text="Agregar al carrito" OnClick="btnAgregarAlCarrito_Click" CssClass="btn btn-primary" CommandArgument='<%# Eval("Id") %>' CommandName="ArticuloId" />
+                        <div class="card-body text-center">
+                            <asp:Button ID="btnAgregarAlCarrito" runat="server" Text="Agregar al carrito" OnClick="btnAgregarAlCarrito_Click" CssClass="btn btn-success" CommandArgument='<%# Eval("Id") %>' CommandName="ArticuloId" />
                         </div>
                     </div>
                 </div>
             </ItemTemplate>
         </asp:Repeater>
     </div>
+
+
 
    <%-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>

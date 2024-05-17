@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="text-center mt-4">
-        <h1>Lista del carrito</h1>
+        <h1>Carrito de compras</h1>
     </div>
 
 
