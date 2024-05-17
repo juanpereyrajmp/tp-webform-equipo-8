@@ -34,7 +34,7 @@ namespace TP_WebForm_Equipo_8
         {
             Button btn = (Button)sender;
             int articuloId = Convert.ToInt32(btn.CommandArgument);
-            //Carrito carrito = new Carrito();
+            Carrito carrito = new Carrito();
 
             ArticuloManager negocio = new ArticuloManager();
             //ListaArticulos = negocio.listaParaImagenes();
@@ -56,7 +56,7 @@ namespace TP_WebForm_Equipo_8
                 // Si el ID del artículo coincide con el ID del artículo del botón, lo agrega a la lista de seleccionados
                 if (articuloId == item.Id)
                 {
-                    // Agrega el artículo a la lista de seleccionados
+                   // Agrega el artículo a la lista de seleccionados
                     seleccionados.Add(item);
                     // Detenemos la búsqueda una vez que el artículo se ha encontrado y agregado
                     break;

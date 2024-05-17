@@ -13,7 +13,14 @@
     <section class="body-def contetiner">
        <%-- <div class="row row-cols-1 row-cols-md-3 g-4">--%>
 
-            <asp:GridView ID="dgvCarrito" runat="server" ORowEditing="dgvCarrito_RowEditing" AutoGenerateColumns="false" CssClass="table table-dark table-border">
+            <asp:GridView ID="dgvCarrito" runat="server" 
+                AutoGenerateColumns="false" 
+                CssClass="table table-dark table-border" 
+                OnRowCancelingEdit="dgvCarrito_RowCancelingEdit" 
+                OnRowDeleting="dgvCarrito_RowDeleting" 
+                OnRowEditing="dgvCarrito_RowEditing" 
+                OnRowUpdating="dgvCarrito_RowUpdating"
+                DataKeyNames="Id">
                 <Columns>
                     <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
                     <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
@@ -23,10 +30,10 @@
                    <%-- <asp:BoundField HeaderText="Cantidad" DataField="Cantidad"/> --%>
                    <asp:TemplateField HeaderText="Cantidad">
                           <ItemTemplate>
-                                 <%# Eval("Cantidad") %>
+                              <asp:Label ID="LabCarritoCant" runat="server" Text= <%# Eval("Cantidad") %>></asp:Label>
                           </ItemTemplate>
                           <EditItemTemplate>
-                                <asp:TextBox ID="txtCantidad" runat="server" Text='<%# Bind("Cantidad") %>' />
+                                <asp:TextBox ID="txtCarritoCant" runat="server" Text='<%# Bind("Cantidad") %>' />
                           </EditItemTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Total">
@@ -34,11 +41,11 @@
                                    <%# (Convert.ToDecimal(Eval("Precio")) * Convert.ToInt32(Eval("Cantidad"))).ToString("C") %>
                            </ItemTemplate>
                     </asp:TemplateField>
-                   
-                
-                  <asp:CommandField ShowEditButton="true" EditText="Editar" CancelText="Cancelar" UpdateText="Actualizar" HeaderText="+"/>
-            </Columns>
-          </asp:GridView>
+                   <asp:CommandField ButtonType="Link" ShowEditButton="true" 
+                       ShowDeleteButton="true"/>
+  
+                </Columns>
+            </asp:GridView>
 
 
 
