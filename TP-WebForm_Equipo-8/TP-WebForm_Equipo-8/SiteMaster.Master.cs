@@ -12,6 +12,9 @@ namespace TP_WebForm_Equipo_8
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            contadorCarrito.CssClass = "contador";
+
             if (!IsPostBack)
             {
                 if (Session["Seleccionados"] != null)
@@ -20,6 +23,15 @@ namespace TP_WebForm_Equipo_8
                     int cantidadArticulos = seleccionados.Count;
 
                     contadorCarrito.Text = cantidadArticulos.ToString();
+
+                    if (cantidadArticulos > 0)
+                    {
+                        contadorCarrito.CssClass = "contador contador-activo";
+                    }
+                    else
+                    {
+                        contadorCarrito.CssClass = "contador";
+                    }
                 }
             }
         }

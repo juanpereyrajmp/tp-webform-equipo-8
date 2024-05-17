@@ -51,33 +51,33 @@ namespace TP_WebForm_Equipo_8
                 seleccionados = (List<Articulo>)Session["Seleccionados"];
             }
 
-            foreach (Articulo item in ListaArticulos)
-            {
-                // Si el ID del artículo coincide con el ID del artículo del botón, lo agrega a la lista de seleccionados
-                if (articuloId == item.Id)
-                {
-                   // Agrega el artículo a la lista de seleccionados
-                    seleccionados.Add(item);
-                    // Detenemos la búsqueda una vez que el artículo se ha encontrado y agregado
-                    break;
-                }
-            }
-
-
             //foreach (Articulo item in ListaArticulos)
             //{
-            //  if (articuloId == item.Id)
+            //    // Si el ID del artículo coincide con el ID del artículo del botón, lo agrega a la lista de seleccionados
+            //    if (articuloId == item.Id)
             //    {
-            
-            //        if (!seleccionados.Any(a => a.Id == item.Id))
-            //        {
-            //            seleccionados.Add(item);
-                       
-            //        }
-            
+            //        // Agrega el artículo a la lista de seleccionados
+            //        seleccionados.Add(item);
+            //        // Detenemos la búsqueda una vez que el artículo se ha encontrado y agregado
             //        break;
             //    }
             //}
+
+
+            foreach (Articulo item in ListaArticulos)
+            {
+                if (articuloId == item.Id)
+                {
+
+                    if (!seleccionados.Any(a => a.Id == item.Id))
+                    {
+                        seleccionados.Add(item);
+
+                    }
+
+                    break;
+                }
+            }
 
 
             //foreach (Articulo item in ListaArticulos)

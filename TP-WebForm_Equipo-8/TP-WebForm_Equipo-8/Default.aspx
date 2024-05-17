@@ -32,25 +32,5 @@
             </ItemTemplate>
         </asp:Repeater>
     </div>
-
-
-
-   <%-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        function actualizarContador() {
-            $.ajax({
-                url: 'Default.aspx/ObtenerCantidadCarrito',
-                type: 'POST',
-                contentType: 'application/json; charset=utf-8',
-                dataType: 'json',
-                success: function (data) {
-
-                    contadorCarrito.textContent = data.d;
-                },
-
-            });
-        }
-    </script>--%>
-
 </asp:Content>
 
