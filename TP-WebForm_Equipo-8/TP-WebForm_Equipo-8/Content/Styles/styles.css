@@ -1,5 +1,4 @@
-﻿/*SECCION NAV*/
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
 
 * {
@@ -9,6 +8,11 @@
     padding: 0;
 }
 
+body{
+    padding: 60px;
+}
+
+/* NAV */
 .contador {
     margin-right: 10px;
     margin-top: 5px;
@@ -41,9 +45,6 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-}
-body {
-    padding: 60px;
 }
 .navbar {
     height: 60px;
