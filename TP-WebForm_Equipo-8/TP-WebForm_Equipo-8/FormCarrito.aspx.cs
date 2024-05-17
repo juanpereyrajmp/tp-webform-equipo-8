@@ -94,12 +94,14 @@ namespace TP_WebForm_Equipo_8
                             }
                             else
                             {                         
-                                lblError.Text = "La cantidad ingresada no es correcta";
+                                string script = "alert('La cantidad ingresada no es un número válido.');";
+                                ScriptManager.RegisterStartupScript(this, GetType(), "CantidadError", script, true);
                             }
                         }
                         else
                         {
-                            lblError.Text = "La cantidad ingresada no es un número válido.";
+                            string script = "alert('La cantidad ingresada no es un número válido.');";
+                            ScriptManager.RegisterStartupScript(this, GetType(), "CantidadInvalida", script, true);
                         }
                     }
                 }

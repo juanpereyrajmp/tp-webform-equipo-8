@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
     <div class="text-center mt-4">
         <h1>Lista del carrito</h1>
     </div>
@@ -14,7 +14,7 @@
         <%-- <div class="row row-cols-1 row-cols-md-3 g-4">--%>
 
         
-        <asp:Label ID="lblError" runat="server" ForeColor="Red" CssClass="error-label"/>
+        <asp:Label ID="lblError" runat="server" ForeColor="Red" />
         <asp:GridView ID="dgvCarrito" runat="server"
             AutoGenerateColumns="false"
             CssClass="table table-dark table-border"
