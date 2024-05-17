@@ -11,17 +11,16 @@ namespace TP_WebForm_Equipo_8
 {
     public partial class FormCarrito : System.Web.UI.Page
     {
-        Carrito carrito =new Carrito();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Seleccionados"] != null)
             {
                 List<Articulo> seleccionados = (List<Articulo>)Session["Seleccionados"];
-         
+
 
                 if (!IsPostBack)
                 {
-                   // repEliminar.DataSource = seleccionados;
+                    // repEliminar.DataSource = seleccionados;
                     //repEliminar.DataBind();
                     dgvCarrito.DataSource = seleccionados;
                     dgvCarrito.DataBind();
@@ -42,12 +41,12 @@ namespace TP_WebForm_Equipo_8
         protected void dgvCarrito_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             List<Articulo> seleccionados = (List<Articulo>)Session["Seleccionados"];
-            int codigo = Convert.ToInt32( dgvCarrito.DataKeys[e.RowIndex].Values[0]);
+            int codigo = Convert.ToInt32(dgvCarrito.DataKeys[e.RowIndex].Values[0]);
             Articulo articuloAEliminar = seleccionados.FirstOrDefault(a => a.Id == codigo);
             if (articuloAEliminar != null)
             {
                 seleccionados.Remove(articuloAEliminar);
-   
+
             }
             dgvCarrito.DataSource = seleccionados;
             dgvCarrito.DataBind();
@@ -57,35 +56,48 @@ namespace TP_WebForm_Equipo_8
 
         protected void dgvCarrito_RowEditing(object sender, GridViewEditEventArgs e)
         {
-
+            List<Articulo> seleccionados = (List<Articulo>)Session["Seleccionados"];
+            dgvCarrito.EditIndex = e.NewEditIndex;
+            dgvCarrito.DataSource = seleccionados;
+            dgvCarrito.DataBind();
         }
+
 
         protected void dgvCarrito_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            if (Session["Seleccionados"] != null)
+            {
+                List<Articulo> seleccionados = (List<Articulo>)Session["Seleccionados"];
+                GridViewRow fila = dgvCarrito.Rows[e.RowIndex];
 
+                int codigo = Convert.ToInt32(dgvCarrito.DataKeys[e.RowIndex].Values[0]);
+
+                Articulo articuloAActualizar = seleccionados[e.RowIndex];
+
+                if (articuloAActualizar.Id == codigo)
+                {
+                    TextBox txtCarritoCant = (TextBox)fila.FindControl("txtCarritoCant");
+                    if (txtCarritoCant != null)
+                    {
+                        int nuevaCantidad;
+                        if (int.TryParse(txtCarritoCant.Text, out nuevaCantidad))
+                        {
+                         
+                            articuloAActualizar.Cantidad = nuevaCantidad;
+
+                           
+                            Session["Seleccionados"] = seleccionados;
+
+                            dgvCarrito.EditIndex = -1;
+                            dgvCarrito.DataSource = seleccionados;
+                            dgvCarrito.DataBind();
+                        }
+                       
+                    }
+                }
+            }
         }
 
-
-        //protected void dgvCarrito_RowEditing(object sender, GridViewUpdateEventArgs e)
-        //{
-        //    List<Articulo> seleccionados = (List<Articulo>)Session["Seleccionados"];
-
-        //    GridViewRow row = dgvCarrito.Rows[e.RowIndex];
-        //    TextBox txtCantidad = (TextBox)row.FindControl("txtCantidad");
-        //    int nuevaCantidad = Convert.ToInt32(txtCantidad.Text);
-
-        //    // Actualiza la cantidad en tu fuente de datos, por ejemplo, en una lista de productos en el carrito
-        //    int indice = e.RowIndex;
-        //    List<Articulo> carrito = Session["Articulo"] as List<Articulo>;
-        //    carrito[indice].Cantidad = nuevaCantidad;
-
-        //    // Cancela el modo de edición
-        //    //dgvCarrito.EditIndex = -1;
-
-        //    // Vuelve a enlazar los datos al GridView
-        //    dgvCarrito.DataSource = seleccionados;
-        //    dgvCarrito.DataBind();
-        //}
 
         //protected void btnEliminarDelCarrito_Click(object sender, EventArgs e)
         //{
