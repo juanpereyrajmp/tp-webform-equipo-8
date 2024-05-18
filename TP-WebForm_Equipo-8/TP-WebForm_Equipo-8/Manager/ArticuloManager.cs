@@ -14,21 +14,24 @@ namespace manager
         AccesoDatos datos = new AccesoDatos();
 
 
-        public List<Articulo> ListarArticulosConSP()
+        public Articulo ListarArticulosConId(int idx)
         {
             List<Articulo> lista = new List<Articulo>();
+            Articulo aux = new Articulo();
             AccesoDatos datos = new AccesoDatos();
 
             try
             {
-                //datos.setearConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion AS ArticuloDescripcion, M.Descripcion AS Marca, C.Descripcion AS Categoria, A.Precio, I.ImagenUrl, C.Id as IdCategoria, M.Id as IdMarca FROM ARTICULOS A LEFT JOIN MARCAS M ON A.IdMarca = M.Id LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo");
+               
+                datos.setearConsulta("SELECT A.Id, A.Codigo, A.Nombre, A.Descripcion AS ArticuloDescripcion, M.Descripcion AS Marca, C.Descripcion AS Categoria, A.Precio, I.ImagenUrl, C.Id as IdCategoria, M.Id as IdMarca FROM ARTICULOS A LEFT JOIN MARCAS M ON A.IdMarca = M.Id LEFT JOIN CATEGORIAS C ON A.IdCategoria = C.Id LEFT JOIN IMAGENES I ON A.Id = I.IdArticulo WHERE Id = @Id");
+                datos.setearParametro("@Id", idx);
                 //datos.ejecutarLectura();
-                datos.setearProcedimiento("storedListar");
+                //datos.setearProcedimiento("storedListar");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
                 {
-                    Articulo aux = new Articulo();
+                   
 
                     aux.Id = (int)datos.Lector["Id"];
                     aux.Codigo = (string)datos.Lector["Codigo"];
@@ -67,9 +70,9 @@ namespace manager
                         aux.Imagen = (string)datos.Lector["ImagenUrl"];
                     }
 
-                    lista.Add(aux);
+                    //lista.Add(aux);
                 }
-                return lista;
+                return aux;
             }
             catch (Exception ex)
             {

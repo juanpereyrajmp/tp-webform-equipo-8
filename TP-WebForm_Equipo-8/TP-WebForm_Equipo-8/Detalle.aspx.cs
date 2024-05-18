@@ -12,29 +12,116 @@ namespace TP_WebForm_Equipo_8
     public partial class Default : System.Web.UI.Page
     {
         public List<Articulo> ListaArticulos { get; set; }
+        public Articulo articuloSeleccionado { get; set; }
+        //Articulo Articulo { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            ArticuloManager negocio = new ArticuloManager();
-            ListaArticulos = negocio.listaParaImagenes();
 
-            if (!IsPostBack)
+            ArticuloManager negocio = new ArticuloManager();
+            int id = Convert.ToInt32(Request.QueryString["articuloId"]);
+            //Articulo = negocio.ListarArticulosConId(id);
+            ListaArticulos = negocio.ListarArticulos();
+            var articulo = ListaArticulos.FirstOrDefault(a => a.Id == id);
+
+            if (articulo != null)
             {
-                repArticulos.DataSource = ListaArticulos;
-                repArticulos.DataBind();
+                // Crear una lista con un solo artículo
+                var listaDeUnArticulo = new List<Articulo> { articulo };
+
+                // Enlazar la lista al Repeater
+                repDetalle.DataSource = listaDeUnArticulo;
+                repDetalle.DataBind();
             }
+
+            //if (Session["ListaArticulos"] != null)
+            //{
+            //    List<Articulo> seleccionados = (List<Articulo>)Session["ListaArticulos"];
+
+
+            //    if (!IsPostBack)
+            //    {
+            //        // repEliminar.DataSource = seleccionados;
+            //        //repEliminar.DataBind();
+            //        repDetalle.DataSource = seleccionados;
+            //        repDetalle.DataBind();
+
+            //    }
+
+            //}
+
+
+
+
+            //ArticuloManager negocio = new ArticuloManager();
+            //ListaArticulos = negocio.listaParaImagenes();
+
+            //if (!IsPostBack)
+            //{
+            //    repDetalle.DataSource = ListaArticulos;
+            //    repDetalle.DataBind();
+            //}
             //if (Session["ListaArticulos"] == null)
             //{
             //    Session.Add("ListaArticulos", ListaArticulos);
-            //    repArticulos.DataSource = ListaArticulos;
-            //    repArticulos.DataBind();
+            //    repDetalle.DataSource = ListaArticulos;
+            //    repDetalle.DataBind();
             //}
+
+
+
+
+            //if (Session["ListaArticulos"] != null)
+            //{
+            //    List<Articulo> ListaArticulos = (List<Articulo>)Session["ListaArtuclos"];
+
+            //    if (Session["Id"] != null)
+            //    {
+            //        int articuloId = Convert.ToInt32(Session["Id"]);
+            //        Articulo articuloSel = ListaArticulos.FirstOrDefault(a => a.Id == articuloId);
+
+            //        if(articuloSel != null)
+            //        {
+            //            if (!IsPostBack)
+            //            {
+            //                // repEliminar.DataSource = seleccionados;
+            //                //repEliminar.DataBind();
+            //                repDetalle.DataSource = new List<Articulo> { articuloSel};
+            //                repDetalle.DataBind();
+
+            //            }
+
+            //        }
+            //    }
+
+
+            //    //foreach (Articulo item in ListaArticulos)
+            //    //{
+            //    //    if (Articulo.Id == item.Id)
+            //    //  {
+            //    //        repDetalle.DataSource = Articulo;
+            //    //        repDetalle.DataBind();
+            //    //    }
+            //    //}
+
+
+            //    //if (!IsPostBack)
+            //    //{
+            //    //    // repEliminar.DataSource = seleccionados;
+            //    //    //repEliminar.DataBind();
+            //    //   repDetalle.DataSource = Articulo;
+            //    //   repDetalle.DataBind();
+
+            //    //}
+
+            //}
+
         }
 
         protected void btnAgregarAlCarrito_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             int articuloId = Convert.ToInt32(btn.CommandArgument);
-            Carrito carrito = new Carrito();
+            //Carrito carrito = new Carrito();
 
             ArticuloManager negocio = new ArticuloManager();
             //ListaArticulos = negocio.listaParaImagenes();
@@ -89,7 +176,8 @@ namespace TP_WebForm_Equipo_8
             //}
 
             Session["Seleccionados"] = seleccionados;
-            Response.Redirect(Request.RawUrl);
+            //Response.Redirect(Request.RawUrl);
+            Response.Redirect("FormCarrito.aspx");
         }
     }
 }
