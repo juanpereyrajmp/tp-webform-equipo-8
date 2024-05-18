@@ -80,9 +80,11 @@ namespace TP_WebForm_Equipo_8
             List<Articulo> listaArticulos = manager.ListarArticulos();
 
             // Filtramos la lista de artículos según el texto de búsqueda
-            List<Articulo> articulosEncontrados = listaArticulos.FindAll(
-                a => a.Nombre.ToLower().Contains(textoBusqueda.ToLower())
-            );
+            List<Articulo> articulosEncontrados = listaArticulos
+                .Where(a => a.Nombre.ToLower().Contains(textoBusqueda.ToLower()))
+                .GroupBy(a => a.Nombre) // Agrupamos por nombre de artículo
+                .Select(group => group.First()) // Tomamos el primer artículo de cada grupo
+                .ToList();
 
             return articulosEncontrados;
         }
