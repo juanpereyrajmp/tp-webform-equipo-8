@@ -84,6 +84,7 @@ namespace manager
             }
 
         }
+
         public List<Articulo> ListarArticulos()
         {
             List<Articulo> lista = new List<Articulo>();
