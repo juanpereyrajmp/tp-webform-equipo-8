@@ -74,6 +74,7 @@
     <Content Include="Default.aspx" />
     <Content Include="FormCarrito.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Home.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -92,6 +93,13 @@
     </Compile>
     <Compile Include="FormCarrito.aspx.designer.cs">
       <DependentUpon>FormCarrito.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="Manager\ArticuloManager.cs" />
     <Compile Include="Dominio\Articulo.cs" />
