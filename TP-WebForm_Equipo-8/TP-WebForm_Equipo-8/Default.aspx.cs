@@ -39,14 +39,14 @@ namespace TP_WebForm_Equipo_8
             ListaArticulos = negocio.ListarArticulos();
 
             List<Articulo> seleccionados;
-            if (Session["Seleccionados"] == null)
+            if (Session["Seleccion"] == null)
             //if (Session["ListaArticulos"] == null)
             {
                 seleccionados = new List<Articulo>();
             }
             else
             {
-                seleccionados = (List<Articulo>)Session["Seleccionados"];
+                seleccionados = (List<Articulo>)Session["Seleccion"];
             }
 
             foreach (Articulo item in ListaArticulos)
@@ -57,7 +57,7 @@ namespace TP_WebForm_Equipo_8
                     if (!seleccionados.Any(a => a.Id == item.Id))
                     {
                         seleccionados.Add(item);
-
+                        
                     }
 
                     break;
