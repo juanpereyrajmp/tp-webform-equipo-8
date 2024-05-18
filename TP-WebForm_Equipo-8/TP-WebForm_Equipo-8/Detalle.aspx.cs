@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using manager;
 using dominio;
+using System.Text;
 
 namespace TP_WebForm_Equipo_8
 {
@@ -52,6 +53,7 @@ namespace TP_WebForm_Equipo_8
                 }
 
             }
+
 
 
 
@@ -121,6 +123,42 @@ namespace TP_WebForm_Equipo_8
 
         }
 
+        protected string GenerateCarouselItems(object dataItem)
+        {
+            // Obtener las imágenes del artículo actual
+            var articulo = (Articulo)dataItem;
+            var imagenesManager = new ImagenManager();
+            var imagenes = imagenesManager.listarPorIdArticulo(articulo.Id);
+
+            // Generar los elementos del carrusel
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < imagenes.Count; i++)
+            {
+                sb.Append("<div class=\"carousel-item");
+                if (i == 0)
+                    sb.Append(" active");
+                sb.Append("\">");
+
+                // Verificar si la URL de la imagen es nula o vacía
+                if (!string.IsNullOrEmpty(imagenes[i].Url))
+                {
+                    sb.Append($"<img src=\"{imagenes[i].Url}\" class=\"d-block w-100\" alt=\"Imagen {i + 1}\">");
+                }
+                else
+                {
+                    // Mostrar un placeholder en caso de que la URL de la imagen sea nula o vacía
+                    sb.Append("<img src=\"https://www.svgrepo.com/show/508699/landscape-placeholder.svg\" class=\"d-block w-100\" alt=\"Placeholder\">");
+                }
+
+                sb.Append("</div>");
+            }
+
+            // Devolver las etiquetas HTML generadas como una cadena
+            return sb.ToString();
+        }
+
+
+
         protected void btnAgregarAlCarrito_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
@@ -183,5 +221,7 @@ namespace TP_WebForm_Equipo_8
             //Response.Redirect(Request.RawUrl);
             Response.Redirect("FormCarrito.aspx");
         }
+
+       
     }
 }

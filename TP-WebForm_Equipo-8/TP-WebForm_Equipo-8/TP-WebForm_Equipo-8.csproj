@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="Content\Icons\logo-carrito.png" />
     <Content Include="Content\Icons\logo-tienda.png" />
+    <Content Include="Content\Icons\place-holder.svg" />
     <Content Include="Content\Styles\carritoStyles.css" />
     <Content Include="Content\Styles\styles.css" />
     <Content Include="Detalle.aspx" />

@@ -100,9 +100,6 @@ namespace TP_WebForm_Equipo_8
             repArticulos.DataBind();
         }
 
-        protected void txtBuscar_TextChanged1(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }
