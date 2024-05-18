@@ -10,91 +10,105 @@
     </div>
 
     <style>
-        .card-img-top {
-            width: 100px; /* ajusta el tamaño  */
-            height: auto;
-        }
+    .card-img-top {
+        width: auto; 
+        height: 400px;
+        object-fit: cover;
+        margin: auto;
+    }
 
-        .galeria {
-            max-width: 400px; /* ajusta el ancho máximo  */
-            margin: auto; /* centrar el contenedor horizontalmente */
-        }
+    .carrousel-inner{
+        height: 200px;
+    }
 
-        .carousel-control-prev-icon,
-        .carousel-control-next-icon {
-            filter: invert(1); /* Invierte el color de las flechas del carrusel */
-        }
-    </style>
+    .carrousel-item{
+        height: 100%;
+    }
 
-    <div class="row row-cols-1 row-cols-lg-1 g-4 galeria">
-        <asp:Repeater ID="repDetalle" runat="server">
-            <ItemTemplate>
-                <div class="col">
-                    <div class="card shadow-sm border-0">
-                        <div id="carousel<%# Eval("Id") %>" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                                <%# GenerateCarouselItems(Container.DataItem) %>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carousel<%# Eval("Id") %>" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carousel<%# Eval("Id") %>" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
+    .galeria {
+        max-width: 400px; 
+        margin: auto;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        filter: invert(1);
+    }
+
+
+</style>
+
+<div class="row row-cols-1 row-cols-lg-1 g-4 galeria">
+    <asp:Repeater ID="repDetalle" runat="server">
+        <ItemTemplate>
+            <div class="col">
+                <div class="card shadow-sm border-0" >
+                    <div id="carousel<%# Eval("Id") %>" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <%# GenerateCarouselItems(Container.DataItem) %>
                         </div>
-                        <div class="card-body">
-                            <h5 class="card-title"><%#Eval("Nombre") %></h5>
-                            <p class="card-text"><%#Eval("Descripcion") %></p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>Marca:</strong> <%#Eval("Marca") %> </li>
-                            <li class="list-group-item"><strong>Categoria:</strong> <%#Eval("Categoria") %></li>
-                            <li class="list-group-item"><strong>Precio:</strong> <%#Eval("Precio") %></li>
-                        </ul>
-                        <div class="card-body text-center">
-                            <asp:Button ID="btnAgregarAlCarrito" runat="server" Text="Agregar al carrito" OnClick="btnAgregarAlCarrito_Click" CssClass="btn btn-success" CommandArgument='<%# Eval("Id") %>' CommandName="ArticuloId" />
-                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carousel<%# Eval("Id") %>" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carousel<%# Eval("Id") %>" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title"><%#Eval("Nombre") %></h5>
+                        <p class="card-text"><%#Eval("Descripcion") %></p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Marca:</strong> <%#Eval("Marca") %> </li>
+                        <li class="list-group-item"><strong>Categoria:</strong> <%#Eval("Categoria") %></li>
+                        <li class="list-group-item"><strong>Precio:</strong> <%#Eval("Precio") %></li>
+                    </ul>
+                    <div class="card-body text-center">
+                        <asp:Button ID="btnAgregarAlCarrito" runat="server" Text="Agregar al carrito" OnClick="btnAgregarAlCarrito_Click" CssClass="btn btn-success" CommandArgument='<%# Eval("Id") %>' CommandName="ArticuloId" />
                     </div>
                 </div>
-            </ItemTemplate>
-        </asp:Repeater>
-    </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var replacedImages = [];
+            </div>
+        </ItemTemplate>
+    </asp:Repeater>
+</div>
 
-            function replaceIfBroken(img) {
-                if (!img.complete || img.naturalHeight === 0 || img.naturalWidth === 0) {
-                    img.src = 'https://www.svgrepo.com/show/508699/landscape-placeholder.svg';
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var replacedImages = [];
+
+        function replaceIfBroken(img) {
+            if (!img.complete || img.naturalHeight === 0 || img.naturalWidth === 0) {
+                img.src = 'https://www.svgrepo.com/show/508699/landscape-placeholder.svg';
+            }
+        }
+
+        function applyImageReplacement(carousel) {
+            var carouselItems = carousel.querySelectorAll('.carousel-item img');
+            carouselItems.forEach(function (img) {
+                if (!replacedImages.includes(img.src)) {
+                    replaceIfBroken(img);
+                    replacedImages.push(img.src);
                 }
+            });
+        }
+
+        var carousels = document.querySelectorAll('.carousel');
+        carousels.forEach(function (carousel) {
+            var carouselItems = carousel.querySelectorAll('.carousel-item');
+            if (carouselItems.length <= 1) {
+                carousel.querySelector('.carousel-control-prev').style.display = 'none';
+                carousel.querySelector('.carousel-control-next').style.display = 'none';
             }
 
-            function applyImageReplacement(carousel) {
-                var activeItem = carousel.querySelector('.carousel-item.active img');
-                if (activeItem && !replacedImages.includes(activeItem.src)) {
-                    replaceIfBroken(activeItem);
-                    replacedImages.push(activeItem.src);
-                }
-            }
-
-            // Agregar lógica para ocultar flechas de control cuando solo hay una imagen
-            var carousels = document.querySelectorAll('.carousel');
-            carousels.forEach(function (carousel) {
-                var carouselItems = carousel.querySelectorAll('.carousel-item');
-                if (carouselItems.length <= 1) {
-                    carousel.querySelector('.carousel-control-prev').style.display = 'none';
-                    carousel.querySelector('.carousel-control-next').style.display = 'none';
-                }
-
+            applyImageReplacement(carousel);
+            carousel.addEventListener('slid.bs.carousel', function () {
                 applyImageReplacement(carousel);
-                carousel.addEventListener('slid.bs.carousel', function () {
-                    applyImageReplacement(carousel);
-                });
             });
         });
-    </script>
+    });
+</script>
 
 
 

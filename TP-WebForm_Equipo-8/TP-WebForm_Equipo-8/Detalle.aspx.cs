@@ -142,12 +142,12 @@ namespace TP_WebForm_Equipo_8
                 // Verificar si la URL de la imagen es nula o vacía
                 if (!string.IsNullOrEmpty(imagenes[i].Url))
                 {
-                    sb.Append($"<img src=\"{imagenes[i].Url}\" class=\"d-block w-100\" alt=\"Imagen {i + 1}\">");
+                    sb.Append($"<img src=\"{imagenes[i].Url}\" class=\"d-block w-100 card-img-top\"  alt =\"Imagen {i + 1}\">");
                 }
                 else
                 {
                     // Mostrar un placeholder en caso de que la URL de la imagen sea nula o vacía
-                    sb.Append("<img src=\"https://www.svgrepo.com/show/508699/landscape-placeholder.svg\" class=\"d-block w-100\" alt=\"Placeholder\">");
+                    sb.Append("<img src=\"https://www.svgrepo.com/show/508699/landscape-placeholder.svg\" class=\"d-block w-100 card-img-top\"  alt=\"Placeholder\">");
                 }
 
                 sb.Append("</div>");
