@@ -6,7 +6,7 @@
     <link href="~/Content/Styles/styles.css" rel="stylesheet" type="text/css"/>
     
     <div class="text-center mt-4">
-        <h1>Articulos</h1>
+        <h1>Articulo seleccionado</h1>
     </div>
 
     <div class="row row-cols-1 row-cols-md-3 g-4">

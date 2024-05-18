@@ -6,7 +6,7 @@
     <div class="text-center mt-4">
         <h1>Home</h1>
 
-        <div class="row row-cols-1 row-cols-md-5 g-4">
+        <div class="row row-cols-1 row-cols-md-4 g-4">
             <asp:Repeater ID="repArticulos" runat="server">
                 <ItemTemplate>
                     <div class="col">

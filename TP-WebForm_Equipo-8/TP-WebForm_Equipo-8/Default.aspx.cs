@@ -25,8 +25,9 @@ namespace TP_WebForm_Equipo_8
         }
 
         protected void btnVerDetalle_Click(object sender, EventArgs e)
-        {
-
+        { 
+            
         }
+
     }
 }
