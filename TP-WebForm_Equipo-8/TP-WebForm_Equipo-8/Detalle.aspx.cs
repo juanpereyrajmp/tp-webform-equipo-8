@@ -17,37 +17,41 @@ namespace TP_WebForm_Equipo_8
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            ArticuloManager negocio = new ArticuloManager();
-            int id = Convert.ToInt32(Request.QueryString["articuloId"]);
-            //Articulo = negocio.ListarArticulosConId(id);
-            ListaArticulos = negocio.ListarArticulos();
-            var articulo = ListaArticulos.FirstOrDefault(a => a.Id == id);
+            //ArticuloManager negocio = new ArticuloManager();
+            //int id = Convert.ToInt32(Request.QueryString["articuloId"]);
+            ////Articulo = negocio.ListarArticulosConId(id);
+            //ListaArticulos = negocio.ListarArticulos();
+            //var articulo = ListaArticulos.FirstOrDefault(a => a.Id == id);
 
-            if (articulo != null)
-            {
-                // Crear una lista con un solo artículo
-                var listaDeUnArticulo = new List<Articulo> { articulo };
-
-                // Enlazar la lista al Repeater
-                repDetalle.DataSource = listaDeUnArticulo;
-                repDetalle.DataBind();
-            }
-
-            //if (Session["ListaArticulos"] != null)
+            //if (articulo != null)
             //{
-            //    List<Articulo> seleccionados = (List<Articulo>)Session["ListaArticulos"];
+            //    // Crear una lista con un solo artículo
+            //    var listaDeUnArticulo = new List<Articulo> { articulo };
 
-
-            //    if (!IsPostBack)
-            //    {
-            //        // repEliminar.DataSource = seleccionados;
-            //        //repEliminar.DataBind();
-            //        repDetalle.DataSource = seleccionados;
-            //        repDetalle.DataBind();
-
-            //    }
-
+            //    // Enlazar la lista al Repeater
+            //    repDetalle.DataSource = listaDeUnArticulo;
+            //    repDetalle.DataBind();
             //}
+
+            if (Session["ListaArticulos"] != null)
+            {
+                List<Articulo> seleccionados = (List<Articulo>)Session["ListaArticulos"];
+                int id = Convert.ToInt32(Request.QueryString["articuloId"]);
+
+
+
+                if (!IsPostBack)
+                {
+                    // repEliminar.DataSource = seleccionados;
+                    //repEliminar.DataBind();
+                    var articulo = seleccionados.FirstOrDefault(a => a.Id == id);
+                    var listaDeUnArticulo = new List<Articulo> { articulo };
+                    repDetalle.DataSource = listaDeUnArticulo;
+                    repDetalle.DataBind();
+
+                }
+
+            }
 
 
 
