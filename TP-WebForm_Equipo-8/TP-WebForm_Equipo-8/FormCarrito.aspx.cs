@@ -143,7 +143,46 @@ namespace TP_WebForm_Equipo_8
 
 
         }
-     
+
+        protected void dgvCarrito_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Incrementar" || e.CommandName == "Decrementar" || e.CommandName == "Eliminar")
+            {
+                int articuloId = Convert.ToInt32(e.CommandArgument);
+                List<Articulo> seleccionados = (List<Articulo>)Session["Seleccionados"];
+
+                Articulo articulo = seleccionados.FirstOrDefault(a => a.Id == articuloId);
+                if (articulo != null)
+                {
+                    if (e.CommandName == "Incrementar")
+                    {
+                        articulo.Cantidad++;
+                    }
+                    else if (e.CommandName == "Decrementar")
+                    {
+                        if (articulo.Cantidad > 1)
+                        {
+                            articulo.Cantidad--;
+                        }
+                        else
+                        {
+                            seleccionados.Remove(articulo);
+                        }
+                    }
+                    else if (e.CommandName == "Eliminar")
+                    {
+                        seleccionados.Remove(articulo);
+                    }
+
+                    Session["Seleccionados"] = seleccionados;
+                    dgvCarrito.DataSource = seleccionados;
+                    dgvCarrito.DataBind();
+                }
+            }
+
+            Response.Redirect(Request.RawUrl);
+        }
+
 
 
         //protected void btnEliminarDelCarrito_Click(object sender, EventArgs e)

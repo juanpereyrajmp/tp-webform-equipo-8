@@ -139,7 +139,7 @@
             OnRowDeleting="dgvCarrito_RowDeleting"
             OnRowEditing="dgvCarrito_RowEditing"
             OnRowUpdating="dgvCarrito_RowUpdating"
-            DataKeyNames="Id">
+            DataKeyNames="Id" OnRowCommand="dgvCarrito_RowCommand">
             <Columns>
                 <asp:BoundField HeaderText="Nombre" DataField="Nombre" ReadOnly="true" />
                 <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" ReadOnly="true" />
@@ -149,17 +149,34 @@
                 <asp:TemplateField HeaderText="Cantidad">
                     <ItemTemplate>
                         <asp:Label ID="LabCarritoCant" runat="server" Text='<%# Eval("Cantidad") %>'></asp:Label>
+                        <asp:Button ID="btnIncrementar" runat="server" Text="+" CommandName="Incrementar" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-customUpdate btn-sm"/>
+                        <asp:Button ID="btnDecrementar" runat="server" Text="-" CommandName="Decrementar" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-customDelete btn-sm" />
+                
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+                
+               <%-- <asp:TemplateField HeaderText="Cantidad">
+                     <ItemTemplate>
+                        <asp:Label ID="LabCarritoCant" runat="server" Text='<%# Eval("Cantidad") %>'></asp:Label>
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:TextBox ID="txtCarritoCant" runat="server" Text='<%# Bind("Cantidad") %>' CssClass="form-control textbox-small" />
                     </EditItemTemplate>
-                </asp:TemplateField>
+                </asp:TemplateField>--%>
                 <asp:TemplateField HeaderText="Total">
                     <ItemTemplate>
                         <%# (Convert.ToDecimal(Eval("Precio")) * Convert.ToInt32(Eval("Cantidad"))).ToString("C") %>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CommandName="Eliminar" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-customDelete btn-sm" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+
+                <%--<asp:TemplateField>
                     <ItemTemplate>
                         <asp:LinkButton ID="EditButton" runat="server" CommandName="Edit" CssClass="btn btn-customEdit btn-sm">
                         <i class="fas fa-edit"></i> Editar
@@ -176,7 +193,7 @@
                         <i class="fas fa-times"></i> Cancelar
                         </asp:LinkButton>
                     </EditItemTemplate>
-                </asp:TemplateField>
+                </asp:TemplateField>--%>
             </Columns>
         </asp:GridView>
     </section>
