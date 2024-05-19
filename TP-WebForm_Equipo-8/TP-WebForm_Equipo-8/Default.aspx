@@ -41,7 +41,12 @@
                 color: white;
             }
 
+        .card-title{
+            font-family: 'Righteous';
+        }
+
         .card-body {
+            
             font-size: 20px;
         }
 

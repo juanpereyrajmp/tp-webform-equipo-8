@@ -43,7 +43,9 @@
             color: black;
             font-size: 35px;
         }
-
+        .card-title{
+            font-family: 'Righteous';
+        }
         .btn-customAgregar {
             background-color: white;
             border: solid 2px #7bc947;
@@ -91,9 +93,9 @@
                             <p class="card-text"><%#Eval("Descripcion") %></p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>Marca:</strong> <%#Eval("Marca") %> </li>
-                            <li class="list-group-item"><strong>Categoria:</strong> <%#Eval("Categoria") %></li>
-                            <li class="list-group-item"><strong>Precio:</strong> $ <%# String.Format("{0:N2}", Eval("Precio")) %></li>
+                            <li class="list-group-item"><strong style="font-family: 'Righteous';">Marca:</strong> <%#Eval("Marca") %> </li>
+                            <li class="list-group-item"><strong style="font-family: 'Righteous';">Categoria:</strong> <%#Eval("Categoria") %></li>
+                            <li class="list-group-item"><strong style="font-family: 'Righteous';">Precio:</strong> $ <%# String.Format("{0:N2}", Eval("Precio")) %></li>
                         </ul>
                         <div class="card-body text-center">
                             <asp:Button ID="btnAgregarAlCarrito" runat="server" Text="Agregar al carrito" OnClick="btnAgregarAlCarrito_Click" CssClass="btn btn-customAgregar" CommandArgument='<%# Eval("Id") %>' CommandName="ArticuloId" />
