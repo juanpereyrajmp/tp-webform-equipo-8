@@ -131,6 +131,15 @@ namespace TP_WebForm_Equipo_8
             
         }
 
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            List<Articulo> seleccionados = (List<Articulo>)Session["Seleccionados"];
+            seleccionados.Clear();
+            LabTotalCantidad.Text = "0";
+            LabTotalPrecio.Text = "0";
+            Response.Redirect(Request.RawUrl);
+        }
+
 
         //protected void btnEliminarDelCarrito_Click(object sender, EventArgs e)
         //{
