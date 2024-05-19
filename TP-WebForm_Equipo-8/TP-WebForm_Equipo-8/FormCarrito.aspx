@@ -22,10 +22,6 @@
             font-size: 1.2em;
             margin-right: 15px;
         }
-
-        .button-custom {
-            margin-top: 10px;
-        }
     </style>
         <script>
         function showAlert() {
@@ -100,7 +96,7 @@
                 <asp:Label ID="LabTotalPrecio" runat="server" Text="" CssClass="font-weight-bold label-custom"></asp:Label>
             </div>
             <div class="col-md-3 text-right">
-                <asp:Button ID="Button1" runat="server" Text="Comprar" CssClass="btn btn-primary button-custom" OnClientClick="showAlert(); return false;"></asp:Button>
+                <asp:Button ID="Button1" runat="server" Text="Comprar" CssClass="btn btn-success button-custom" OnClientClick="showAlert(); return false;"></asp:Button>
             </div>
         </div>
     </div>
