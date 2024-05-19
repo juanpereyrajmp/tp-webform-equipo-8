@@ -75,6 +75,7 @@ namespace TP_WebForm_Equipo_8
             }
             dgvCarrito.DataSource = seleccionados;
             dgvCarrito.DataBind();
+            Response.Redirect(Request.RawUrl);
 
 
         }
