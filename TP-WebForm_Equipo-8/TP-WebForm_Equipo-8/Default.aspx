@@ -4,14 +4,33 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <style>
+        .titulo {
+            text-align: center;
+            margin: 20px 0 40px;
+            padding: 5px 10px;
+            color: black;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            letter-spacing: 2px;
+            display: inline-block;
+        }
+
+        .input-group .btn {
+            margin-left: 10px;
+            border-radius: 10px;
+        }
+    </style>
+
     <div class="text-center mt-4">
-        <h1>Home</h1>
+        <h1 class="titulo">Articulos</h1>
 
         <!-- Barra de búsqueda con icono de lupa -->
         <div class="input-group mb-3">
-            <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control" placeholder="Buscar por nombre..." AutoPostBack="False" OnTextChanged="txtBuscar_TextChanged" oninput="buscarArticulos()"></asp:TextBox>
+            <asp:TextBox ID="txtBuscar" runat="server" CssClass="form-control" style="border-radius: 10px;" placeholder="Buscar por nombre..." AutoPostBack="False" OnTextChanged="txtBuscar_TextChanged" oninput="buscarArticulos()"></asp:TextBox>
             <div class="input-group-append">
-                <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-success" OnClick="btnBuscar_Click" Text="Buscar" />
+                <asp:Button ID="btnBuscar" runat="server" CssClass="btn btn-success" OnClick="btnBuscar_Click" Text='Buscar'  />
+                
             </div>
         </div>
 

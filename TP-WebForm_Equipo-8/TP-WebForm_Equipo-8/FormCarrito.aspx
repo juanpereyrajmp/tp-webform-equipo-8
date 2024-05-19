@@ -1,12 +1,26 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="FormCarrito.aspx.cs" Inherits="TP_WebForm_Equipo_8.FormCarrito" EnableEventValidation="true"  %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMaster.Master" AutoEventWireup="true" CodeBehind="FormCarrito.aspx.cs" Inherits="TP_WebForm_Equipo_8.FormCarrito" EnableEventValidation="true" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+
+    <style>
+        .titulo {
+            text-align: center;
+            margin: 20px 0;
+            padding: 5px 10px;
+            color: black;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            letter-spacing: 2px;
+            display: inline-block;
+        }
+    </style>
+
     <div class="text-center mt-4">
-        <h1>Carrito de compras</h1>
+        <h1 class="titulo">Carrito de compras</h1>
     </div>
 
     <section class="body-def contetiner">

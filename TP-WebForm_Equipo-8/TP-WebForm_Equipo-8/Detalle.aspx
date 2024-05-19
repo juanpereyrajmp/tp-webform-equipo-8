@@ -5,10 +5,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="~/Content/Styles/styles.css" rel="stylesheet" type="text/css" />
 
-    <div class="text-center mt-4">
-        <h1>Detalle del artículo</h1>
-    </div>
-
     <style>
     .card-img-top {
         width: auto; 
@@ -30,13 +26,44 @@
         margin: auto;
     }
 
-    .carousel-control-prev-icon,
+    .carousel-control-prev,
+    .carousel-control-next{
+        width: 40px;
+        height: 40px;
+        background-color: rgba(0,0,0,0.7);
+        display: flex;
+        border-radius: 10%;
+        margin: 10px;
+        margin-top: 50%;
+        
+        align-items: center;
+        justify-content: center;
+    }
+
+    .titulo{
+        text-align: center;
+        margin: 20px 0;
+        padding: 5px 10px;
+        color: black;
+        
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        letter-spacing: 2px;
+        display: inline-block;
+    }
+
+/*    .carousel-control-prev-icon,
     .carousel-control-next-icon {
         filter: invert(1);
-    }
+        color: white;
+    }*/
 
 
 </style>
+
+<div class="text-center mt-4">
+    <h1 class="titulo">Detalle del artículo</h1>
+</div>
 
 <div class="row row-cols-1 row-cols-lg-1 g-4 galeria">
     <asp:Repeater ID="repDetalle" runat="server">

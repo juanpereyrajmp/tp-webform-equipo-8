@@ -12,6 +12,10 @@ body{
     padding: 60px;
 }
 
+.titulo{
+    margin-top: 100px;
+}
+
 /* NAV */
 .contador {
     margin-right: 10px;
