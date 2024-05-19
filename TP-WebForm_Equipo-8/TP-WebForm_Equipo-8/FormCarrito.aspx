@@ -98,10 +98,11 @@
                 <asp:Label ID="LabTotalPrecio" runat="server" Text="" CssClass="font-weight-bold label-custom"></asp:Label>
             </div>
             <div class="col-md-3 text-right">
-                <asp:Button ID="Button1" runat="server" Text="Comprar" CssClass="btn btn-success button-custom" OnClick="Button1_Click" />
+                <asp:Button ID="Button1" runat="server" Text="Comprar" CssClass="btn btn-success button-custom" OnClick="Button1_Click"/>
                 <%--<asp:Button ID="Button2" runat="server" Text="Comprar" CssClass="btn btn-success button-custom" OnClientClick="showAlert(); return false;" OnClick="Button1_Click" />--%>
             </div>
     <% } %>
+        
         </div>
     </div>
 

@@ -115,7 +115,7 @@ namespace TP_WebForm_Equipo_8
                                 Response.Redirect(Request.RawUrl);
                             }
                             else
-                            {                         
+                            {
                                 string script = "alert('La cantidad ingresada no es un número válido.');";
                                 ScriptManager.RegisterStartupScript(this, GetType(), "CantidadError", script, true);
                             }
@@ -128,7 +128,7 @@ namespace TP_WebForm_Equipo_8
                     }
                 }
             }
-            
+
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -137,8 +137,13 @@ namespace TP_WebForm_Equipo_8
             seleccionados.Clear();
             LabTotalCantidad.Text = "0";
             LabTotalPrecio.Text = "0";
-            Response.Redirect(Request.RawUrl);
+
+            string script = "alert('Gracias por la compra.'); window.location='" + Request.RawUrl + "';";
+            ScriptManager.RegisterStartupScript(this, GetType(), "CompraAlert", script, true);
+
+
         }
+     
 
 
         //protected void btnEliminarDelCarrito_Click(object sender, EventArgs e)
