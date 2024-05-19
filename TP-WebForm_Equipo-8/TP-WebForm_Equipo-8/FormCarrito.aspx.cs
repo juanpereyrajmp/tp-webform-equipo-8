@@ -11,13 +11,15 @@ namespace TP_WebForm_Equipo_8
 {
     public partial class FormCarrito : System.Web.UI.Page
     {
+        public bool carritoLleno = false;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["Seleccionados"] != null)
             {
                 List<Articulo> seleccionados = (List<Articulo>)Session["Seleccionados"];
 
-
+                carritoLleno = false;
                 if (!IsPostBack)
                 {
                     // repEliminar.DataSource = seleccionados;
@@ -28,7 +30,7 @@ namespace TP_WebForm_Equipo_8
                     foreach (Articulo item in seleccionados)
                     {
                         cant += item.Cantidad;
-
+                        carritoLleno = true;
                     }
                     LabTotalCantidad.Text = "Cantidad de Productos: " + cant.ToString();
 
@@ -36,7 +38,6 @@ namespace TP_WebForm_Equipo_8
                     foreach (Articulo item in seleccionados)
                     {
                         total += item.Precio * item.Cantidad;
-
                     }
 
                     System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Globalization.CultureInfo.InvariantCulture.Clone();
@@ -46,13 +47,7 @@ namespace TP_WebForm_Equipo_8
 
                     LabTotalPrecio.Text = "Total: " + total.ToString("C2", customCulture);
                 }
-               
-
-
-
             }
-          
-
         }
 
         protected void dgvCarrito_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)

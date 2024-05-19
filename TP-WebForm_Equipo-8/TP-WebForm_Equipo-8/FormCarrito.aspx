@@ -23,11 +23,11 @@
             margin-right: 15px;
         }
     </style>
-        <script>
+    <script>
         function showAlert() {
             alert("Todavía no se puede comprar en esta página. Tené paciencia.");
         }
-        </script>
+    </script>
     <div class="text-center mt-4">
         <h1 class="titulo">Carrito de compras</h1>
     </div>
@@ -95,9 +95,12 @@
             <div class="col-md-3 text-right">
                 <asp:Label ID="LabTotalPrecio" runat="server" Text="" CssClass="font-weight-bold label-custom"></asp:Label>
             </div>
+            <% if (carritoLleno)
+                { %>
             <div class="col-md-3 text-right">
-                <asp:Button ID="Button1" runat="server" Text="Comprar" CssClass="btn btn-success button-custom" OnClientClick="showAlert(); return false;"></asp:Button>
+                <asp:Button ID="Button1" runat="server" Text="Comprar" CssClass="btn btn-success button-custom" OnClientClick="showAlert(); return false;" />
             </div>
+            <% } %>
         </div>
     </div>
 
