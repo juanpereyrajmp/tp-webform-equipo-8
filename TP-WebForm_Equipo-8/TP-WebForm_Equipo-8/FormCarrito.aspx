@@ -87,6 +87,8 @@
     <%--<asp:Label ID="LabTotalCantidad" runat="server" Text="Label" OnLoad="Page_Load"></asp:Label>
     <asp:Label ID="LabTotalPrecio" runat="server" Text="Label"></asp:Label>
     <asp:Button ID="Button1" runat="server" Text="Button" />--%>
+    <% if (carritoLleno)
+       { %>
     <div class="container">
         <div class="row justify-content-end">
             <div class="col-md-3 text-right">
@@ -95,12 +97,10 @@
             <div class="col-md-3 text-right">
                 <asp:Label ID="LabTotalPrecio" runat="server" Text="" CssClass="font-weight-bold label-custom"></asp:Label>
             </div>
-            <% if (carritoLleno)
-                { %>
             <div class="col-md-3 text-right">
                 <asp:Button ID="Button1" runat="server" Text="Comprar" CssClass="btn btn-success button-custom" OnClientClick="showAlert(); return false;" />
             </div>
-            <% } %>
+    <% } %>
         </div>
     </div>
 
