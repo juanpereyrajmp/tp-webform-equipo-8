@@ -44,7 +44,7 @@
                                 <p class="card-title"><%#Eval("Nombre") %></p>
                             </div>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item"><strong>Precio: </strong>$ <%# String.Format("{0:F2}", Eval("Precio")) %></li>
+                                <li class="list-group-item"><strong>Precio:</strong> $ <%# String.Format("{0:N2}", Eval("Precio")) %></li>
                             </ul>
                             <div class="card-body text-center">
                                 <asp:Button ID="btnVerDetalle" runat="server" Text="Ver detalle" OnClick="btnVerDetalle_Click" CssClass="btn btn-warning" CommandArgument='<%# Eval("Id") %>' CommandName="ArticuloId" />

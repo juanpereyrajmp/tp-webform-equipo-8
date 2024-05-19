@@ -90,7 +90,7 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><strong>Marca:</strong> <%#Eval("Marca") %> </li>
                         <li class="list-group-item"><strong>Categoria:</strong> <%#Eval("Categoria") %></li>
-                        <li class="list-group-item"><strong>Precio:</strong> <%#Eval("Precio") %></li>
+                        <li class="list-group-item"><strong>Precio:</strong> $ <%# String.Format("{0:N2}", Eval("Precio")) %></li>
                     </ul>
                     <div class="card-body text-center">
                         <asp:Button ID="btnAgregarAlCarrito" runat="server" Text="Agregar al carrito" OnClick="btnAgregarAlCarrito_Click" CssClass="btn btn-success" CommandArgument='<%# Eval("Id") %>' CommandName="ArticuloId" />

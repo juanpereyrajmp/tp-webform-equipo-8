@@ -17,8 +17,21 @@
             letter-spacing: 2px;
             display: inline-block;
         }
-    </style>
 
+        .label-custom {
+            font-size: 1.2em;
+            margin-right: 15px;
+        }
+
+        .button-custom {
+            margin-top: 10px;
+        }
+    </style>
+        <script>
+        function showAlert() {
+            alert("Todavía no se puede comprar en esta página. Tené paciencia.");
+        }
+        </script>
     <div class="text-center mt-4">
         <h1 class="titulo">Carrito de compras</h1>
     </div>
@@ -39,7 +52,7 @@
                 <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" ReadOnly="true" />
                 <asp:BoundField HeaderText="Marca" DataField="Marca" ReadOnly="true" />
                 <asp:BoundField HeaderText="Categoria" DataField="Categoria" ReadOnly="true" />
-                <asp:BoundField HeaderText="Precio Unidad" DataField="Precio" ReadOnly="true" />
+                <asp:BoundField HeaderText="Precio Unidad" DataField="Precio" ReadOnly="true" DataFormatString="${0:N2}" HtmlEncode="False" />
                 <%-- <asp:BoundField HeaderText="Cantidad" DataField="Cantidad"/> --%>
                 <asp:TemplateField HeaderText="Cantidad">
                     <ItemTemplate>
@@ -75,8 +88,21 @@
             </Columns>
         </asp:GridView>
     </section>
-    <asp:Label ID="LabTotalCantidad" runat="server" Text="Label" OnLoad="Page_Load"></asp:Label>
+    <%--<asp:Label ID="LabTotalCantidad" runat="server" Text="Label" OnLoad="Page_Load"></asp:Label>
     <asp:Label ID="LabTotalPrecio" runat="server" Text="Label"></asp:Label>
-    <asp:Button ID="Button1" runat="server" Text="Button" />
-    
+    <asp:Button ID="Button1" runat="server" Text="Button" />--%>
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-md-3 text-right">
+                <asp:Label ID="LabTotalCantidad" runat="server" Text="" CssClass="font-weight-bold label-custom"></asp:Label>
+            </div>
+            <div class="col-md-3 text-right">
+                <asp:Label ID="LabTotalPrecio" runat="server" Text="" CssClass="font-weight-bold label-custom"></asp:Label>
+            </div>
+            <div class="col-md-3 text-right">
+                <asp:Button ID="Button1" runat="server" Text="Comprar" CssClass="btn btn-primary button-custom" OnClientClick="showAlert(); return false;"></asp:Button>
+            </div>
+        </div>
+    </div>
+
 </asp:Content>

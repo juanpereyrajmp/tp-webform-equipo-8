@@ -30,7 +30,7 @@ namespace TP_WebForm_Equipo_8
                         cant += item.Cantidad;
 
                     }
-                    LabTotalCantidad.Text = cant.ToString();
+                    LabTotalCantidad.Text = "Cantidad de Productos: " + cant.ToString();
 
                     decimal total = 0;
                     foreach (Articulo item in seleccionados)
@@ -38,7 +38,13 @@ namespace TP_WebForm_Equipo_8
                         total += item.Precio * item.Cantidad;
 
                     }
-                    LabTotalPrecio.Text = total.ToString();
+
+                    System.Globalization.CultureInfo customCulture = (System.Globalization.CultureInfo)System.Globalization.CultureInfo.InvariantCulture.Clone();
+                    customCulture.NumberFormat.CurrencyDecimalSeparator = ",";
+                    customCulture.NumberFormat.CurrencyGroupSeparator = ".";
+                    customCulture.NumberFormat.CurrencySymbol = "$";
+
+                    LabTotalPrecio.Text = "Total: " + total.ToString("C2", customCulture);
                 }
                
 
@@ -110,6 +116,7 @@ namespace TP_WebForm_Equipo_8
                                 dgvCarrito.EditIndex = -1;
                                 dgvCarrito.DataSource = seleccionados;
                                 dgvCarrito.DataBind();
+                                Response.Redirect(Request.RawUrl);
                             }
                             else
                             {                         
@@ -125,7 +132,7 @@ namespace TP_WebForm_Equipo_8
                     }
                 }
             }
-            Response.Redirect(Request.RawUrl);
+            
         }
 
 
