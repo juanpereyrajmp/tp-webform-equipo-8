@@ -32,6 +32,13 @@ namespace TP_WebForm_Equipo_8
                     }
                     LabTotalCantidad.Text = cant.ToString();
 
+                    decimal total = 0;
+                    foreach (Articulo item in seleccionados)
+                    {
+                        total += item.Precio * item.Cantidad;
+
+                    }
+                    LabTotalPrecio.Text = total.ToString();
                 }
                
 
