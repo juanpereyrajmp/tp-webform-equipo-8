@@ -24,10 +24,22 @@ namespace TP_WebForm_Equipo_8
                     //repEliminar.DataBind();
                     dgvCarrito.DataSource = seleccionados;
                     dgvCarrito.DataBind();
+                    int cant = 0;
+                    foreach (Articulo item in seleccionados)
+                    {
+                        cant += item.Cantidad;
+
+                    }
+                    LabTotalCantidad.Text = cant.ToString();
 
                 }
+               
+
+
 
             }
+          
+
         }
 
         protected void dgvCarrito_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
@@ -106,6 +118,7 @@ namespace TP_WebForm_Equipo_8
                     }
                 }
             }
+            Response.Redirect(Request.RawUrl);
         }
 
 

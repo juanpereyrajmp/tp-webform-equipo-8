@@ -75,4 +75,8 @@
             </Columns>
         </asp:GridView>
     </section>
+    <asp:Label ID="LabTotalCantidad" runat="server" Text="Label" OnLoad="Page_Load"></asp:Label>
+    <asp:Label ID="LabTotalPrecio" runat="server" Text="Label"></asp:Label>
+    <asp:Button ID="Button1" runat="server" Text="Button" />
+    
 </asp:Content>
