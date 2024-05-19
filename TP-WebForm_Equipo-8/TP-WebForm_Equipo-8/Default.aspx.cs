@@ -24,9 +24,9 @@ namespace TP_WebForm_Equipo_8
             }
             if (Session["ListaArticulos"] == null)
             {
-               Session.Add("ListaArticulos", ListaArticulos);
-               repArticulos.DataSource = ListaArticulos;
-               repArticulos.DataBind();
+                Session.Add("ListaArticulos", ListaArticulos);
+                repArticulos.DataSource = ListaArticulos;
+                repArticulos.DataBind();
             }
         }
 
@@ -40,7 +40,6 @@ namespace TP_WebForm_Equipo_8
 
             List<Articulo> seleccionados;
             if (Session["Seleccion"] == null)
-            //if (Session["ListaArticulos"] == null)
             {
                 seleccionados = new List<Articulo>();
             }
@@ -57,14 +56,13 @@ namespace TP_WebForm_Equipo_8
                     if (!seleccionados.Any(a => a.Id == item.Id))
                     {
                         seleccionados.Add(item);
-                        
+
                     }
 
                     break;
                 }
             }
             Session["ListaArticulos"] = seleccionados;
-            //Response.Redirect(Request.RawUrl);
             Response.Redirect("Detalle.aspx?articuloId=" + articuloId);
         }
 
@@ -75,12 +73,10 @@ namespace TP_WebForm_Equipo_8
 
         public List<Articulo> BuscarArticulos(string textoBusqueda)
         {
-            // Aquí simulamos una lista de artículos
             ArticuloManager manager = new ArticuloManager();
             List<Articulo> listaArticulos = manager.ListarArticulos();
-
-            // Filtramos la lista de artículos según el texto de búsqueda
             List<Articulo> articulosEncontrados = listaArticulos
+
                 .Where(a => a.Nombre.ToLower().Contains(textoBusqueda.ToLower()))
                 .GroupBy(a => a.Nombre) // Agrupamos por nombre de artículo
                 .Select(group => group.First()) // Tomamos el primer artículo de cada grupo
@@ -95,13 +91,13 @@ namespace TP_WebForm_Equipo_8
 
             // Realiza la búsqueda en tus datos utilizando el texto de búsqueda
             List<Articulo> articulosEncontrados = BuscarArticulos(textoBusqueda);
-            
+
 
             // Enlaza los resultados de la búsqueda al control de Repeater
             repArticulos.DataSource = articulosEncontrados;
             repArticulos.DataBind();
         }
 
-        
+
     }
 }

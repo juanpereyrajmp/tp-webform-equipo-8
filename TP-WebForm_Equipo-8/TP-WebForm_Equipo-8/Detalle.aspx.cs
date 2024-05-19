@@ -14,113 +14,22 @@ namespace TP_WebForm_Equipo_8
     {
         public List<Articulo> ListaArticulos { get; set; }
         public Articulo articuloSeleccionado { get; set; }
-        //Articulo Articulo { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            //ArticuloManager negocio = new ArticuloManager();
-            //int id = Convert.ToInt32(Request.QueryString["articuloId"]);
-            ////Articulo = negocio.ListarArticulosConId(id);
-            //ListaArticulos = negocio.ListarArticulos();
-            //var articulo = ListaArticulos.FirstOrDefault(a => a.Id == id);
-
-            //if (articulo != null)
-            //{
-            //    // Crear una lista con un solo artículo
-            //    var listaDeUnArticulo = new List<Articulo> { articulo };
-
-            //    // Enlazar la lista al Repeater
-            //    repDetalle.DataSource = listaDeUnArticulo;
-            //    repDetalle.DataBind();
-            //}
-
             if (Session["ListaArticulos"] != null)
             {
                 List<Articulo> seleccionados = (List<Articulo>)Session["ListaArticulos"];
                 int id = Convert.ToInt32(Request.QueryString["articuloId"]);
 
-
-
                 if (!IsPostBack)
                 {
-                    // repEliminar.DataSource = seleccionados;
-                    //repEliminar.DataBind();
                     var articulo = seleccionados.FirstOrDefault(a => a.Id == id);
                     var listaDeUnArticulo = new List<Articulo> { articulo };
                     repDetalle.DataSource = listaDeUnArticulo;
                     repDetalle.DataBind();
-
                 }
-
             }
-
-
-
-
-
-            //ArticuloManager negocio = new ArticuloManager();
-            //ListaArticulos = negocio.listaParaImagenes();
-
-            //if (!IsPostBack)
-            //{
-            //    repDetalle.DataSource = ListaArticulos;
-            //    repDetalle.DataBind();
-            //}
-            //if (Session["ListaArticulos"] == null)
-            //{
-            //    Session.Add("ListaArticulos", ListaArticulos);
-            //    repDetalle.DataSource = ListaArticulos;
-            //    repDetalle.DataBind();
-            //}
-
-
-
-
-            //if (Session["ListaArticulos"] != null)
-            //{
-            //    List<Articulo> ListaArticulos = (List<Articulo>)Session["ListaArtuclos"];
-
-            //    if (Session["Id"] != null)
-            //    {
-            //        int articuloId = Convert.ToInt32(Session["Id"]);
-            //        Articulo articuloSel = ListaArticulos.FirstOrDefault(a => a.Id == articuloId);
-
-            //        if(articuloSel != null)
-            //        {
-            //            if (!IsPostBack)
-            //            {
-            //                // repEliminar.DataSource = seleccionados;
-            //                //repEliminar.DataBind();
-            //                repDetalle.DataSource = new List<Articulo> { articuloSel};
-            //                repDetalle.DataBind();
-
-            //            }
-
-            //        }
-            //    }
-
-
-            //    //foreach (Articulo item in ListaArticulos)
-            //    //{
-            //    //    if (Articulo.Id == item.Id)
-            //    //  {
-            //    //        repDetalle.DataSource = Articulo;
-            //    //        repDetalle.DataBind();
-            //    //    }
-            //    //}
-
-
-            //    //if (!IsPostBack)
-            //    //{
-            //    //    // repEliminar.DataSource = seleccionados;
-            //    //    //repEliminar.DataBind();
-            //    //   repDetalle.DataSource = Articulo;
-            //    //   repDetalle.DataBind();
-
-            //    //}
-
-            //}
-
         }
 
         protected string GenerateCarouselItems(object dataItem)
@@ -155,20 +64,16 @@ namespace TP_WebForm_Equipo_8
 
             // Devolver las etiquetas HTML generadas como una cadena
             return sb.ToString();
+
         }
-
-
 
         protected void btnAgregarAlCarrito_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             int articuloId = Convert.ToInt32(btn.CommandArgument);
-            //Carrito carrito = new Carrito();
 
             ArticuloManager negocio = new ArticuloManager();
-            //ListaArticulos = negocio.listaParaImagenes();
             ListaArticulos = negocio.ListarArticulos();
-
 
             List<Articulo> seleccionados;
             if (Session["Seleccionados"] == null)
@@ -179,19 +84,6 @@ namespace TP_WebForm_Equipo_8
             {
                 seleccionados = (List<Articulo>)Session["Seleccionados"];
             }
-
-            //foreach (Articulo item in ListaArticulos)
-            //{
-            //    // Si el ID del artículo coincide con el ID del artículo del botón, lo agrega a la lista de seleccionados
-            //    if (articuloId == item.Id)
-            //    {
-            //        // Agrega el artículo a la lista de seleccionados
-            //        seleccionados.Add(item);
-            //        // Detenemos la búsqueda una vez que el artículo se ha encontrado y agregado
-            //        break;
-            //    }
-            //}
-
 
             foreach (Articulo item in ListaArticulos)
             {
@@ -208,26 +100,11 @@ namespace TP_WebForm_Equipo_8
                         Articulo articuloExistente = seleccionados.First(a => a.Id == item.Id);
                         articuloExistente.Cantidad++;
                     }
-                    
-
                     break;
                 }
             }
-
-
-            //foreach (Articulo item in ListaArticulos)
-            //{
-            //    if (articuloId == item.Id)
-            //  {
-            //       seleccionados.Add(item);
-            //    }
-            //}
-
             Session["Seleccionados"] = seleccionados;
-            //Response.Redirect(Request.RawUrl);
             Response.Redirect("FormCarrito.aspx");
         }
-
-       
     }
 }

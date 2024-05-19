@@ -9,8 +9,7 @@
         .card-img-top {
             width: auto;
             height: 400px;
-            
-            object-fit:contain;
+            object-fit: contain;
             margin: auto;
         }
 
@@ -43,9 +42,11 @@
             color: black;
             font-size: 35px;
         }
-        .card-title{
+
+        .card-title {
             font-family: 'Righteous';
         }
+
         .btn-customAgregar {
             background-color: white;
             border: solid 2px #7bc947;
@@ -58,12 +59,6 @@
                 border: solid 2px #7bc947;
                 color: white;
             }
-
-        /*    .carousel-control-prev-icon,
-    .carousel-control-next-icon {
-        filter: invert(1);
-        color: white;
-    }*/
     </style>
 
     <div class="text-center mt-4">
@@ -142,31 +137,5 @@
         });
     </script>
 
-
-
-
-
-
-    <%--<asp:Repeater ID="repArticulos" runat="server">
-            <ItemTemplate>
-                <div class="col">
-                    <div class="card shadow-sm" style="width: 100%; margin: auto;">
-                        <img src="<%# Eval("Imagen") %>" class="card-img-top" alt="Imagen del Articulo" style="height: 500px; object-fit: cover; margin: auto; width: auto;" onerror="this.onerror=null;this.src='https://www.svgrepo.com/show/508699/landscape-placeholder.svg';">
-                        <div class="card-body">
-                            <h5 class="card-title"><%#Eval("Nombre") %></h5>
-                            <p class="card-text"><%#Eval("Descripcion") %></p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item"><strong>Marca:</strong> <%#Eval("Marca") %> </li>
-                            <li class="list-group-item"><strong>Categoria:</strong> <%#Eval("Categoria") %></li>
-                            <li class="list-group-item"><strong>Precio:</strong> <%#Eval("Precio") %></li>
-                        </ul>
-                        <div class="card-body text-center">
-                            <asp:Button ID="btnAgregarAlCarrito" runat="server" Text="Agregar al carrito" OnClick="btnAgregarAlCarrito_Click" CssClass="btn btn-success" CommandArgument='<%# Eval("Id") %>' CommandName="ArticuloId" />
-                        </div>
-                    </div>
-                </div>
-            </ItemTemplate>
-        </asp:Repeater>--%>
 </asp:Content>
 

@@ -30,7 +30,6 @@
             width: 100%;
             color: #212529;
             border-collapse: collapse;
-            
         }
 
 
@@ -149,21 +148,11 @@
                 <asp:TemplateField HeaderText="Cantidad">
                     <ItemTemplate>
                         <asp:Label ID="LabCarritoCant" runat="server" Text='<%# Eval("Cantidad") %>'></asp:Label>
-                        <asp:Button ID="btnIncrementar" runat="server" Text="+" CommandName="Incrementar" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-customUpdate btn-sm"/>
+                        <asp:Button ID="btnIncrementar" runat="server" Text="+" CommandName="Incrementar" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-customUpdate btn-sm" />
                         <asp:Button ID="btnDecrementar" runat="server" Text="-" CommandName="Decrementar" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-customDelete btn-sm" />
-                
+
                     </ItemTemplate>
                 </asp:TemplateField>
-
-                
-               <%-- <asp:TemplateField HeaderText="Cantidad">
-                     <ItemTemplate>
-                        <asp:Label ID="LabCarritoCant" runat="server" Text='<%# Eval("Cantidad") %>'></asp:Label>
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:TextBox ID="txtCarritoCant" runat="server" Text='<%# Bind("Cantidad") %>' CssClass="form-control textbox-small" />
-                    </EditItemTemplate>
-                </asp:TemplateField>--%>
                 <asp:TemplateField HeaderText="Total">
                     <ItemTemplate>
                         <%# (Convert.ToDecimal(Eval("Precio")) * Convert.ToInt32(Eval("Cantidad"))).ToString("C") %>
@@ -174,32 +163,9 @@
                         <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CommandName="Eliminar" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-customDelete btn-sm" />
                     </ItemTemplate>
                 </asp:TemplateField>
-
-
-                <%--<asp:TemplateField>
-                    <ItemTemplate>
-                        <asp:LinkButton ID="EditButton" runat="server" CommandName="Edit" CssClass="btn btn-customEdit btn-sm">
-                        <i class="fas fa-edit"></i> Editar
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="DeleteButton" runat="server" CommandName="Delete" CssClass="btn btn-customDelete btn-sm">
-                        <i class="fas fa-trash-alt"></i> Eliminar
-                        </asp:LinkButton>
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:LinkButton ID="UpdateButton" runat="server" CommandName="Update" CssClass="btn btn-customUpdate btn-sm">
-                        <i class="fas fa-check"></i> Actualizar
-                        </asp:LinkButton>
-                        <asp:LinkButton ID="CancelButton" runat="server" CommandName="Cancel" CssClass="btn btn-customCancel btn-sm">
-                        <i class="fas fa-times"></i> Cancelar
-                        </asp:LinkButton>
-                    </EditItemTemplate>
-                </asp:TemplateField>--%>
             </Columns>
         </asp:GridView>
     </section>
-    <%--<asp:Label ID="LabTotalCantidad" runat="server" Text="Label" OnLoad="Page_Load"></asp:Label>
-    <asp:Label ID="LabTotalPrecio" runat="server" Text="Label"></asp:Label>
-    <asp:Button ID="Button1" runat="server" Text="Button" />--%>
     <% if (carritoLleno)
         { %>
     <div class="container mt-4">

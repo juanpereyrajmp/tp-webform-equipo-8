@@ -22,8 +22,6 @@ namespace TP_WebForm_Equipo_8
                 carritoLleno = false;
                 if (!IsPostBack)
                 {
-                    // repEliminar.DataSource = seleccionados;
-                    //repEliminar.DataBind();
                     dgvCarrito.DataSource = seleccionados;
                     dgvCarrito.DataBind();
                     int cant = 0;
@@ -71,8 +69,6 @@ namespace TP_WebForm_Equipo_8
             dgvCarrito.DataSource = seleccionados;
             dgvCarrito.DataBind();
             Response.Redirect(Request.RawUrl);
-
-
         }
 
         protected void dgvCarrito_RowEditing(object sender, GridViewEditEventArgs e)
@@ -182,31 +178,5 @@ namespace TP_WebForm_Equipo_8
 
             Response.Redirect(Request.RawUrl);
         }
-
-
-
-        //protected void btnEliminarDelCarrito_Click(object sender, EventArgs e)
-        //{
-        //    Button btn = (Button)sender;
-        //    int articuloId = Convert.ToInt32(btn.CommandArgument);
-
-        //    List<Articulo> seleccionados;
-        //    if (Session["Seleccionados"] != null) { seleccionados = (List<Articulo>)Session["Seleccionados"]; }
-        //    else { seleccionados = new List<Articulo>(); }
-
-        //    List<Articulo> nuevaLista = new List<Articulo>();
-        //    bool eliminado = false;
-
-        //    foreach (var articulo in seleccionados)
-        //    {
-        //        if (!eliminado && articulo.Id == articuloId) { eliminado = true; }
-        //        else { nuevaLista.Add(articulo); }
-        //    }
-
-        //    Session["Seleccionados"] = nuevaLista;
-        //    Response.Redirect(Request.RawUrl);
-        //    repEliminar.DataSource = nuevaLista;
-        //    repEliminar.DataBind();
-        //}
     }
 }
