@@ -203,6 +203,12 @@ namespace TP_WebForm_Equipo_8
                         seleccionados.Add(item);
 
                     }
+                    else
+                    {
+                        Articulo articuloExistente = seleccionados.First(a => a.Id == item.Id);
+                        articuloExistente.Cantidad++;
+                    }
+                    
 
                     break;
                 }
