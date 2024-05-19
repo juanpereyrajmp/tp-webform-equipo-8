@@ -20,9 +20,16 @@ namespace TP_WebForm_Equipo_8
                 if (Session["Seleccionados"] != null)
                 {
                     List<Articulo> seleccionados = (List<Articulo>)Session["Seleccionados"];
-                    int cantidadArticulos = seleccionados.Count;
+                    int cantidadArticulos = 0;
+
+                    foreach(Articulo item in seleccionados)
+                    {
+                        cantidadArticulos += item.Cantidad;
+                    }
 
                     contadorCarrito.Text = cantidadArticulos.ToString();
+
+
 
                     if (cantidadArticulos > 0)
                     {
@@ -34,7 +41,7 @@ namespace TP_WebForm_Equipo_8
                     }
                 }
             }
-            
+
         }
     }
 }
