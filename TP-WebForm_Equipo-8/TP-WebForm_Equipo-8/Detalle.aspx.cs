@@ -34,12 +34,12 @@ namespace TP_WebForm_Equipo_8
 
         protected string GenerateCarouselItems(object dataItem)
         {
-            // Obtener las imágenes del artículo actual
+           
             var articulo = (Articulo)dataItem;
             var imagenesManager = new ImagenManager();
             var imagenes = imagenesManager.listarPorIdArticulo(articulo.Id);
 
-            // Generar los elementos del carrusel
+            
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < imagenes.Count; i++)
             {
@@ -48,23 +48,23 @@ namespace TP_WebForm_Equipo_8
                     sb.Append(" active");
                 sb.Append("\">");
 
-                // Verificar si la URL de la imagen es nula o vacía
-                if (!string.IsNullOrEmpty(imagenes[i].Url))
+                
+                if (!string.IsNullOrEmpty(imagenes[i].Url) && Uri.IsWellFormedUriString(imagenes[i].Url, UriKind.Absolute))
                 {
-                    // Agregar un parámetro de caché a la URL de la imagen para limpiar la caché
-                    string imageUrl = imagenes[i].Url + "?cacheBuster=" + Guid.NewGuid().ToString(); // Usando un nuevo GUID como parámetro de caché
-                    sb.Append($"<img src=\"{imageUrl}\" class=\"d-block w-100 card-img-top\"  alt =\"Imagen {i + 1}\">");
+                    
+                    string imageUrl = imagenes[i].Url + "?cacheBuster=" + Guid.NewGuid().ToString(); 
+                    sb.Append($"<img src=\"{imageUrl}\" class=\"d-block w-100 card-img-top\"  alt =\"Imagen {i + 1}\" onerror=\"this.onerror=null;this.src='https://simacolor.com.gt/sistema/files/articulos/no.png';\">");
                 }
                 else
                 {
-                    // Mostrar un placeholder en caso de que la URL de la imagen sea nula o vacía
+                    
                     sb.Append("<img src=\"https://www.svgrepo.com/show/508699/landscape-placeholder.svg\" class=\"d-block w-100 card-img-top\"  alt=\"Placeholder\">");
                 }
 
                 sb.Append("</div>");
             }
 
-            // Devolver las etiquetas HTML generadas como una cadena
+            
             return sb.ToString();
         }
 
