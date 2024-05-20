@@ -51,7 +51,9 @@ namespace TP_WebForm_Equipo_8
                 // Verificar si la URL de la imagen es nula o vacía
                 if (!string.IsNullOrEmpty(imagenes[i].Url))
                 {
-                    sb.Append($"<img src=\"{imagenes[i].Url}\" class=\"d-block w-100 card-img-top\"  alt =\"Imagen {i + 1}\">");
+                    // Agregar un parámetro de caché a la URL de la imagen para limpiar la caché
+                    string imageUrl = imagenes[i].Url + "?cacheBuster=" + Guid.NewGuid().ToString(); // Usando un nuevo GUID como parámetro de caché
+                    sb.Append($"<img src=\"{imageUrl}\" class=\"d-block w-100 card-img-top\"  alt =\"Imagen {i + 1}\">");
                 }
                 else
                 {
@@ -64,7 +66,6 @@ namespace TP_WebForm_Equipo_8
 
             // Devolver las etiquetas HTML generadas como una cadena
             return sb.ToString();
-
         }
 
         protected void btnAgregarAlCarrito_Click(object sender, EventArgs e)

@@ -65,6 +65,7 @@
                 background-color: #E24F3B;
                 border: solid 2px white;
                 color: white;
+                 border: solid 2px #E24F3B;
             }
 
         .btn-customEdit {
@@ -78,6 +79,7 @@
                 background-color: #29ABE2;
                 border: solid 2px white;
                 color: white;
+                border: solid 2px #29ABE2;
             }
 
         .btn-customUpdate {
@@ -91,6 +93,7 @@
                 background-color: #1DB954;
                 border: solid 2px white;
                 color: white;
+                border: solid 2px #1DB954;
             }
 
         .btn-customCancel {
@@ -104,6 +107,7 @@
                 background-color: #898C8A;
                 border: solid 2px white;
                 color: white;
+                border: solid 2px #898C8A;
             }
 
         .btn-customComprar {
@@ -148,9 +152,12 @@
                 <asp:TemplateField HeaderText="Cantidad">
                     <ItemTemplate>
                         <asp:Label ID="LabCarritoCant" runat="server" Text='<%# Eval("Cantidad") %>'></asp:Label>
-                        <asp:Button ID="btnIncrementar" runat="server" Text="+" CommandName="Incrementar" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-customUpdate btn-sm" />
-                        <asp:Button ID="btnDecrementar" runat="server" Text="-" CommandName="Decrementar" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-customDelete btn-sm" />
-
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField>
+                    <ItemTemplate>
+                        <asp:Button ID="btnIncrementar" Style="margin-left: 20px; width: 30px; height: 30px; align-content: center; align-items: center;" runat="server" Text="+" CommandName="Incrementar" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-customUpdate btn-sm" />
+                        <asp:Button ID="btnDecrementar" Style="width: 30px; height: 30px; align-content: center; align-items: center;" runat="server" Text="-" CommandName="Decrementar" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-customDelete btn-sm" />
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Total">
@@ -160,7 +167,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField>
                     <ItemTemplate>
-                        <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CommandName="Eliminar" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-customDelete btn-sm" />
+                        <asp:Button ID="btnEliminar" runat="server" Text="Eliminar" CommandName="Eliminar" CommandArgument='<%# Eval("Id") %>' CssClass="btn btn-customCancel btn-sm" />
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

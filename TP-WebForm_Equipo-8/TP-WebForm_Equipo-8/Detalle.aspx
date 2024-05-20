@@ -66,7 +66,7 @@
     </div>
 
     <div class="row row-cols-1 row-cols-lg-1 g-4 galeria">
-        <asp:Repeater ID="repDetalle" runat="server">
+        <asp:Repeater ID="repDetalle" runat="server" ClientIDMode="Static">
             <ItemTemplate>
                 <div class="col">
                     <div class="card shadow-sm border-0">
@@ -102,14 +102,76 @@
     </div>
 
     <script>
+        //document.addEventListener('DOMContentLoaded', function () {
+        //    var replacedImages = [];
+
+        //    function replaceIfBroken(img) {
+        //        if (!img.complete || img.naturalHeight === 0 || img.naturalWidth === 0) {
+        //            img.src = 'https://simacolor.com.gt/sistema/files/articulos/no.png';
+        //        }
+        //    }
+
+        //    function applyImageReplacement(carousel) {
+        //        var carouselItems = carousel.querySelectorAll('.carousel-item img');
+        //        carouselItems.forEach(function (img) {
+        //            if (!replacedImages.includes(img.src)) {
+        //                replaceIfBroken(img);
+        //                replacedImages.push(img.src);
+        //            }
+        //        });
+        //    }
+
+        //    var carousels = document.querySelectorAll('.carousel');
+        //    carousels.forEach(function (carousel) {
+        //        var carouselItems = carousel.querySelectorAll('.carousel-item');
+        //        if (carouselItems.length <= 1) {
+        //            carousel.querySelector('.carousel-control-prev').style.display = 'none';
+        //            carousel.querySelector('.carousel-control-next').style.display = 'none';
+        //        }
+
+        //        applyImageReplacement(carousel);
+        //        carousel.addEventListener('slid.bs.carousel', function () {
+        //            applyImageReplacement(carousel);
+        //        });
+        //    });
+        //});
+
+        //document.addEventListener('DOMContentLoaded', function () {
+        //    var replacedImages = [];
+
+        //    function replaceIfBroken(img) {
+        //        if (!img.complete || img.naturalHeight === 0 || img.naturalWidth === 0) {
+        //            img.src = 'https://simacolor.com.gt/sistema/files/articulos/no.png';
+        //        }
+        //    }
+
+        //    function applyImageReplacement(carousel) {
+        //        var carouselItems = carousel.querySelectorAll('.carousel-item img');
+        //        carouselItems.forEach(function (img) {
+        //            if (!replacedImages.includes(img.src)) {
+        //                replaceIfBroken(img);
+        //                replacedImages.push(img.src);
+        //            }
+        //        });
+        //    }
+
+        //    var carousels = document.querySelectorAll('.carousel');
+        //    carousels.forEach(function (carousel) {
+        //        var carouselItems = carousel.querySelectorAll('.carousel-item');
+        //        if (carouselItems.length <= 1) {
+        //            carousel.querySelector('.carousel-control-prev').style.display = 'none';
+        //            carousel.querySelector('.carousel-control-next').style.display = 'none';
+        //        }
+
+        //        applyImageReplacement(carousel);
+        //        carousel.addEventListener('slid.bs.carousel', function () {
+        //            applyImageReplacement(carousel);
+        //        });
+        //    });
+        //});
+
         document.addEventListener('DOMContentLoaded', function () {
             var replacedImages = [];
-
-            function replaceIfBroken(img) {
-                if (!img.complete || img.naturalHeight === 0 || img.naturalWidth === 0) {
-                    img.src = 'https://simacolor.com.gt/sistema/files/articulos/no.png';
-                }
-            }
 
             function applyImageReplacement(carousel) {
                 var carouselItems = carousel.querySelectorAll('.carousel-item img');
@@ -129,12 +191,43 @@
                     carousel.querySelector('.carousel-control-next').style.display = 'none';
                 }
 
-                applyImageReplacement(carousel);
                 carousel.addEventListener('slid.bs.carousel', function () {
                     applyImageReplacement(carousel);
                 });
+
+                // Escuchar el evento 'load' en cada imagen del carrusel
+                var carouselImages = carousel.querySelectorAll('img');
+                carouselImages.forEach(function (img) {
+                    img.addEventListener('load', function () {
+                        applyImageReplacement(carousel);
+                    });
+                });
             });
         });
+
+        function addCacheBusterToImages() {
+            // Obtener todas las imágenes dentro del repeater
+            var repeaterImages = document.querySelectorAll('#<%= repDetalle.ClientID %> img');
+            var timestamp = new Date().getTime();
+
+            // Añadir el parámetro de cachebuster a cada URL de imagen
+            repeaterImages.forEach(function (img) {
+                var src = img.getAttribute('src');
+                if (src) {
+                    img.setAttribute('src', src.split('?')[0] + '?cachebuster=' + timestamp);
+                }
+            });
+        }
+        window.onload = function () {
+            addCacheBusterToImages();
+        };
+        function replaceIfBroken(img) {
+            if (!img.complete || img.naturalHeight === 0 || img.naturalWidth === 0) {
+                img.src = 'https://simacolor.com.gt/sistema/files/articulos/no.png';
+            }
+        }
+
+
     </script>
 
 </asp:Content>
