@@ -13,17 +13,16 @@ namespace manager
         private SqlConnection conexion;
         private SqlCommand comando;
         private SqlDataReader lector;
-        
+
         public SqlDataReader Lector
         {
             get { return lector; }
         }
 
-        public AccesoDatos() 
+        public AccesoDatos()
         {
             conexion = new SqlConnection("server=.\\SQLEXPRESS; database=CATALOGO_P3_DB; integrated security=true");
             comando = new SqlCommand();
-
         }
 
         public void setearConsulta(string consulta)
@@ -35,7 +34,7 @@ namespace manager
         public void setearProcedimiento(string sp)
         {
             comando.CommandType = System.Data.CommandType.StoredProcedure;
-            comando.CommandText=sp;
+            comando.CommandText = sp;
         }
 
         public void ejecutarLectura()
@@ -74,8 +73,10 @@ namespace manager
         public void cerrarConexion()
         {
             if (lector != null)
+            {
                 lector.Close();
-            conexion.Close();
+                conexion.Close();
+            }
         }
 
     }

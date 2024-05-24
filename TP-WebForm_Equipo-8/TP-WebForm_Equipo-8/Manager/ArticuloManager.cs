@@ -55,7 +55,6 @@ namespace manager
                         aux.Categoria.Descripcion = "Sin categoria";
                     }
 
-
                     aux.Precio = (decimal)datos.Lector["Precio"];
 
                     if (!Convert.IsDBNull(datos.Lector["ImagenUrl"]))
@@ -92,10 +91,12 @@ namespace manager
                         diccionarioArticulos.Add(articulo.Codigo, articulo);
                         articulo.Imagenes = new List<string>();
                     }
+
                     diccionarioArticulos[articulo.Codigo].Imagenes.Add(articulo.Imagen);
                 }
 
                 List<Articulo> listaParaDgv = diccionarioArticulos.Values.ToList();
+
                 return listaParaDgv;
             }
             else

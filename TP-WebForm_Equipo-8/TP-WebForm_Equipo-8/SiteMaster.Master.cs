@@ -22,14 +22,12 @@ namespace TP_WebForm_Equipo_8
                     List<Articulo> seleccionados = (List<Articulo>)Session["Seleccionados"];
                     int cantidadArticulos = 0;
 
-                    foreach(Articulo item in seleccionados)
+                    foreach (Articulo item in seleccionados)
                     {
                         cantidadArticulos += item.Cantidad;
                     }
 
                     contadorCarrito.Text = cantidadArticulos.ToString();
-
-
 
                     if (cantidadArticulos > 0)
                     {

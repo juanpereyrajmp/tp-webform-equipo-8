@@ -30,6 +30,11 @@ namespace TP_WebForm_Equipo_8
             }
         }
 
+        protected void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         protected void btnVerDetalle_Click(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
@@ -52,23 +57,16 @@ namespace TP_WebForm_Equipo_8
             {
                 if (articuloId == item.Id)
                 {
-
                     if (!seleccionados.Any(a => a.Id == item.Id))
                     {
                         seleccionados.Add(item);
-
                     }
-
                     break;
                 }
             }
+
             Session["ListaArticulos"] = seleccionados;
             Response.Redirect("Detalle.aspx?articuloId=" + articuloId);
-        }
-
-        protected void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         public List<Articulo> BuscarArticulos(string textoBusqueda)
@@ -78,8 +76,8 @@ namespace TP_WebForm_Equipo_8
             List<Articulo> articulosEncontrados = listaArticulos
 
                 .Where(a => a.Nombre.ToLower().Contains(textoBusqueda.ToLower()))
-                .GroupBy(a => a.Nombre) // Agrupamos por nombre de artículo
-                .Select(group => group.First()) // Tomamos el primer artículo de cada grupo
+                .GroupBy(a => a.Nombre) 
+                .Select(group => group.First())
                 .ToList();
 
             return articulosEncontrados;
@@ -88,16 +86,12 @@ namespace TP_WebForm_Equipo_8
         protected void btnBuscar_Click(object sender, EventArgs e)
         {
             string textoBusqueda = txtBuscar.Text;
-
-            // Realiza la búsqueda en tus datos utilizando el texto de búsqueda
+            
             List<Articulo> articulosEncontrados = BuscarArticulos(textoBusqueda);
 
-
-            // Enlaza los resultados de la búsqueda al control de Repeater
             repArticulos.DataSource = articulosEncontrados;
             repArticulos.DataBind();
         }
-
 
     }
 }

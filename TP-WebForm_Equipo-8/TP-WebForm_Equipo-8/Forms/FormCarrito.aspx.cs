@@ -20,19 +20,24 @@ namespace TP_WebForm_Equipo_8
                 List<Articulo> seleccionados = (List<Articulo>)Session["Seleccionados"];
 
                 carritoLleno = false;
+
                 if (!IsPostBack)
                 {
                     dgvCarrito.DataSource = seleccionados;
                     dgvCarrito.DataBind();
+
                     int cant = 0;
+
                     foreach (Articulo item in seleccionados)
                     {
                         cant += item.Cantidad;
                         carritoLleno = true;
                     }
+
                     LabTotalCantidad.Text = "Cantidad de Productos: " + cant.ToString();
 
                     decimal total = 0;
+
                     foreach (Articulo item in seleccionados)
                     {
                         total += item.Precio * item.Cantidad;
@@ -59,13 +64,16 @@ namespace TP_WebForm_Equipo_8
         protected void dgvCarrito_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             List<Articulo> seleccionados = (List<Articulo>)Session["Seleccionados"];
+
             int codigo = Convert.ToInt32(dgvCarrito.DataKeys[e.RowIndex].Values[0]);
+
             Articulo articuloAEliminar = seleccionados.FirstOrDefault(a => a.Id == codigo);
+
             if (articuloAEliminar != null)
             {
                 seleccionados.Remove(articuloAEliminar);
-
             }
+
             dgvCarrito.DataSource = seleccionados;
             dgvCarrito.DataBind();
             Response.Redirect(Request.RawUrl);
@@ -124,7 +132,6 @@ namespace TP_WebForm_Equipo_8
                     }
                 }
             }
-
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -136,7 +143,6 @@ namespace TP_WebForm_Equipo_8
 
             string script = "alert('Gracias por la compra.'); window.location='" + Request.RawUrl + "';";
             ScriptManager.RegisterStartupScript(this, GetType(), "CompraAlert", script, true);
-
 
         }
 

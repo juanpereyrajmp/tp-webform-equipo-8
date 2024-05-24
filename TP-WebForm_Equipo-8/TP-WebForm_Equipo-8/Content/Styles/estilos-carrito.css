@@ -1,0 +1,143 @@
+﻿/* TABLA */
+
+.table-custom {
+    width: 100%;
+    color: #212529;
+    border-collapse: collapse;
+}
+
+    .table-custom th {
+        background-color: #7bc947;
+        color: #fff;
+    }
+
+    .table-custom td, .table-custom th {
+        border-color: #454d55;
+        padding: 0.75rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }
+
+    .table-custom thead th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #dee2e6;
+        background-color: #f8f9fa;
+    }
+
+    .table-custom tbody + tbody {
+        border-top: 2px solid #dee2e6;
+    }
+
+    .table-custom .btn {
+        margin-right: 5px;
+    }
+
+    .table-custom .form-control {
+        width: 80px;
+        display: inline-block;
+    }
+
+/* GENERAL */
+
+.titulo {
+    text-align: center;
+    margin: 20px 0;
+    padding: 5px 10px;
+    color: black;
+    font-size: 35px;
+}
+
+.label-custom {
+    font-size: 20px;
+    font-weight: bolder;
+    margin-right: 15px;
+}
+
+.textbox-small {
+    width: 50px;
+    display: inline-block;
+}
+
+/* BOTONES */
+
+.btn-custom {
+    background-color: white;
+    border: solid 2px #7bc947;
+    color: #7bc947;
+    margin-right: 5px;
+    border-radius: 30px;
+}
+
+    .btn-custom:hover {
+        background-color: #7bc947;
+        border: solid 2px #7bc947;
+        color: white;
+    }
+
+.btn-custom2 {
+    background-color: white;
+    border-color: white;
+    color: black;
+    border-radius: 30px;
+    border: solid 2px white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    font-size: 15px;
+    width: auto;
+    height: auto;
+}
+
+    .btn-custom2:hover {
+        background-color: #7bc947;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        border: solid 2px #7bc947;
+        color: white;
+    }
+
+.btn-customDecrementar {
+    background-color: white;
+    color: #E24F3B;
+    border-radius: 10px;
+    border: solid 2px #E24F3B;
+}
+
+    .btn-customDecrementar:hover {
+        background-color: #E24F3B;
+        color: white;
+    }
+
+.btn-customIncrementar {
+    background-color: white;
+    color: #1DB954;
+    border-radius: 10px;
+    border: solid 2px #1DB954;
+}
+
+    .btn-customIncrementar:hover {
+        background-color: #1DB954;
+        color: white;
+    }
+
+.btn-customEliminar {
+    background-color: white;
+    color: #898C8A;
+    border-radius: 10px;
+    border: solid 2px #898C8A;
+}
+
+    .btn-customEliminar:hover {
+        background-color: #898C8A;
+        color: white;
+    }
+
+.btn-customComprar {
+    background-color: white;
+    color: #7bc947;
+    border-radius: 10px;
+    border: solid 2px #7bc947;
+    width: 100%;
+}
+
+    .btn-customComprar:hover {
+        background-color: #7bc947;
+        color: white;
+    }

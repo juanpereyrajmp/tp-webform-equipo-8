@@ -1,0 +1,57 @@
+﻿.card-img-top {
+    width: auto;
+    height: 400px;
+    object-fit: contain;
+    margin: auto;
+}
+
+.carrousel-item {
+    height: 100%;
+}
+
+.galeria {
+    max-width: 600px;
+    margin: auto;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0,0,0,0.7);
+    display: flex;
+    border-radius: 10%;
+    margin: 10px;
+    margin-top: 30%;
+    align-items: center;
+    justify-content: center;
+}
+
+.titulo {
+    text-align: center;
+    margin: 20px 0;
+    padding: 5px 10px;
+    color: black;
+    font-size: 35px;
+}
+
+.card-title {
+    font-family: 'Righteous';
+}
+
+.list-group-item {
+    color: black;
+}
+
+.btn-customAgregar {
+    background-color: white;
+    border: solid 2px #7bc947;
+    color: #7bc947;
+    border-radius: 30px;
+}
+
+    .btn-customAgregar:hover {
+        background-color: #7bc947;
+        border: solid 2px #7bc947;
+        color: white;
+    }

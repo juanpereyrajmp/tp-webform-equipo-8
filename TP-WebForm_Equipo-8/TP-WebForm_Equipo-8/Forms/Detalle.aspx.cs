@@ -34,13 +34,13 @@ namespace TP_WebForm_Equipo_8
 
         protected string GenerateCarouselItems(object dataItem)
         {
-           
+
             var articulo = (Articulo)dataItem;
             var imagenesManager = new ImagenManager();
             var imagenes = imagenesManager.listarPorIdArticulo(articulo.Id);
 
-            
             StringBuilder sb = new StringBuilder();
+
             for (int i = 0; i < imagenes.Count; i++)
             {
                 sb.Append("<div class=\"carousel-item");
@@ -48,23 +48,19 @@ namespace TP_WebForm_Equipo_8
                     sb.Append(" active");
                 sb.Append("\">");
 
-                
                 if (!string.IsNullOrEmpty(imagenes[i].Url) && Uri.IsWellFormedUriString(imagenes[i].Url, UriKind.Absolute))
                 {
-                    
-                    string imageUrl = imagenes[i].Url + "?cacheBuster=" + Guid.NewGuid().ToString(); 
+                    string imageUrl = imagenes[i].Url + "?cacheBuster=" + Guid.NewGuid().ToString();
                     sb.Append($"<img src=\"{imageUrl}\" class=\"d-block w-100 card-img-top\"  alt =\"Imagen {i + 1}\" onerror=\"this.onerror=null;this.src='https://simacolor.com.gt/sistema/files/articulos/no.png';\">");
                 }
                 else
                 {
-                    
                     sb.Append("<img src=\"https://www.svgrepo.com/show/508699/landscape-placeholder.svg\" class=\"d-block w-100 card-img-top\"  alt=\"Placeholder\">");
                 }
 
                 sb.Append("</div>");
             }
 
-            
             return sb.ToString();
         }
 
@@ -90,11 +86,9 @@ namespace TP_WebForm_Equipo_8
             {
                 if (articuloId == item.Id)
                 {
-
                     if (!seleccionados.Any(a => a.Id == item.Id))
                     {
                         seleccionados.Add(item);
-
                     }
                     else
                     {
@@ -104,6 +98,7 @@ namespace TP_WebForm_Equipo_8
                     break;
                 }
             }
+
             Session["Seleccionados"] = seleccionados;
             Response.Redirect("FormCarrito.aspx");
         }
